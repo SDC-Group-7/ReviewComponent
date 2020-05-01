@@ -8,8 +8,12 @@
     "node": ">=6.13.0"
   },
   "scripts": {
+    "reset_db": "mysql -uroot < ./db/lego_schema.sql",
+    "seed_db": "npm run reset_db && node ./db/seeder.js"
   },
   "dependencies": {
+    "express": "^4.17.1",
+    "mysql": "^2.18.1"
   },
   "devDependencies": {
     "eslint-config-hackreactor": "git://github.com/reactorcore/eslint-config-hackreactor"
