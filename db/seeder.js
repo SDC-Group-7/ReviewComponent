@@ -27,19 +27,23 @@ helpers.addUsers(data.users, db)
       await helpers.addExperiences(data.experiences, db);
     }
   })
+  .then(async () => {
+    for (let i = 0; i < 20; i += 1) {
+      // Insert 5 unique reviews times
+      await helpers.addReviews(data.reviews, db);
+    }
+  })
+  .then(async () => {
+    for (let i = 0; i < 20; i += 1) {
+      // Insert 5 unique images times
+      await helpers.addImages(data.images, db);
+    }
+  })
   .then(() => {
-    console.log('end');
+    console.log('finished inserting all datas!');
     db.connection.end()}
   )
-  .catch(() => {
-    console.log('err');
-    db.conneciton.end();
+  .catch((err) => {
+    console.error('err: ', err);
+    db.connection.end();
   });
-
-
-
-
-// Initially created random user data with age 1 and used randomAge to randomize age
-// Update the initial data into a data file
-// helpers.randomAge(data.users);
-// fs.writeFile('./legos_data.js', JSON.stringify(data), () => 1)
