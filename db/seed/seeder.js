@@ -1,7 +1,7 @@
 var mysql = require('mysql');
-var data = require('./legos_data.js');
-var helpers = require('../db/helpers.js');
-var db= require('./index.js');
+var data = require('../legos_data.js');
+var helpers = require('./helpers.js');
+var db= require('../index.js');
 
 /*
 data
