@@ -1,7 +1,8 @@
-var mysql = require('mysql');
-var data = require('../legos_data.js');
-var helpers = require('./helpers.js');
-var db= require('../index.js');
+/* eslint-disable no-await-in-loop */
+/* eslint-disable max-len */
+const data = require('../legos_data.js');
+const helpers = require('./helpers.js');
+const db = require('../index.js');
 
 /*
 data
@@ -9,6 +10,7 @@ data
 names: 100 entries - {name, age}
 products: 5 entries - {name}
 experiences: 5 entries - {play_experience: 4, difficulty: 4, value: 5, build_time: 5}
+// eslint-disable-next-line max-len
 reviews: 5 entries - {rating: 5, recommended: 1, subject: 'lorum ipsum 1', is_helpful: 5, is_not_helpful: 1, product_id: 1, experience_id: 1, user_id: 1},
 images: 5 entries - {url: 'https://aws.s3/1', review_id: 1}
 */
@@ -41,8 +43,8 @@ helpers.addUsers(data.users, db)
   })
   .then(() => {
     console.log('finished inserting all datas!');
-    db.connection.end()}
-  )
+    db.connection.end();
+  })
   .catch((err) => {
     console.error('err: ', err);
     db.connection.end();
