@@ -4,7 +4,7 @@ const app = express();
 const port = 8080;
 
 app.get('/api/products/:product_id', (req, res) => {
-  models.getReview(req.params.product_id, (err, data) => {
+  models.getProduct(req.params.product_id, (err, data) => {
     if (err) {
       res.status(500).send(err);
     } else {
