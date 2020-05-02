@@ -11,14 +11,6 @@ reviews: 5 entries - {rating: 5, recommended: 1, subject: 'lorum ipsum 1', is_he
 images: 5 entries - {url: 'https://aws.s3/1', review_id: 1}
 */
 
-// randomize all user age
-const randomAge = function (data) {
-  data.forEach((person) => {
-    var age = Math.floor(Math.random() * 100) + 5;
-    person.age = age;
-  });
-};
-
 const addUsers = async (users, db) => {
   await Promise.map(users, (user) => {
     return db.connection.query('INSERT INTO users (name, age) VALUES (?, ?)', [user.name, user.age]);
@@ -47,10 +39,18 @@ const addExperiences = async (experiences, db) => {
   })
 };
 
+const addImages = async (images, db) => {
+  const queryString = 'INSERT INTO images (url, review_id) VALUES (?, ?)';
+  await Promise.map(images, image => {
+    const values = [image.url, image.review_id];
+    return db.connection.query(queryString, values);
+  })
+}
+
 module.exports = {
-  randomAge,
   addUsers,
   addProducts,
   addReviews,
   addExperiences,
+  addImages
 }
