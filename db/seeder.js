@@ -21,10 +21,16 @@ helpers.addUsers(data.users, db)
       await helpers.addProducts(data.products, db);
     }
   })
+  .then(async () => {
+    for (let i = 0; i < 20; i += 1) {
+      // Insert 5 unique experiences 20 times
+      await helpers.addExperiences(data.experiences, db);
+    }
+  })
   .then(() => {
-      console.log('end');
-      db.connection.end()}
-    )
+    console.log('end');
+    db.connection.end()}
+  )
   .catch(() => {
     console.log('err');
     db.conneciton.end();
