@@ -2,34 +2,22 @@
 // https://jestjs.io/docs/en/configuration.html
 
 module.exports = {
-  // All imported modules in your tests should be mocked automatically
-  // automock: false,
-
-  // Stop running tests after `n` failures
-  // bail: 0,
-
-  // Respect "browser" field in package.json when resolving modules
-  // browser: false,
-
-  // The directory where Jest should store its cached dependency information
-  // cacheDirectory: "/private/var/folders/q4/srdmg3_n2qd2rd5y37hxhv480000gp/T/jest_dy",
-
   // Automatically clear mock calls and instances between every test
   clearMocks: true,
 
   // Indicates whether the coverage information should be collected while executing the test
-  // collectCoverage: false,
+  collectCoverage: true,
 
   // An array of glob patterns indicating a set of files for which coverage information should be collected
-  // collectCoverageFrom: undefined,
+  collectCoverageFrom: ['client/src/**/*.{js,jsx}', 'server/**/*.js'],
 
   // The directory where Jest should output its coverage files
   coverageDirectory: 'coverage',
 
   // An array of regexp pattern strings used to skip coverage collection
-  // coveragePathIgnorePatterns: [
-  //   "/node_modules/"
-  // ],
+  coveragePathIgnorePatterns: [
+    '/node_modules/'
+  ],
 
   // A list of reporter names that Jest uses when writing coverage reports
   // coverageReporters: [
