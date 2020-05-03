@@ -1,7 +1,8 @@
 import "regenerator-runtime/runtime";
 import supertest from 'supertest';
-import server from '../server';
+
 import db from '../../db';
+import server from '../server';
 
 const request = supertest(server);
 
@@ -12,14 +13,15 @@ describe('tests products api', () => {
   });
 
   it('should get a product', async (done) => {
-    const res = await request.get('/api/products/1');
+    const product = {'id': 1, 'name': 'batman'};
+    const res = await request.get(`/api/products/${product.id}`);
     expect(res.statusCode).toEqual(200);
-    expect(res.body).toEqual({'id': 1, 'name': 'batman'});
+    expect(res.body).toEqual(product);
     done();
   });
 
   it('should 404 if the id does not exist', async (done) => {
-    const res = await request.get('/api/products/101');
+    const res = await request.get('/api/products/null');
     expect(res.statusCode).toEqual(404);
     done();
   })
