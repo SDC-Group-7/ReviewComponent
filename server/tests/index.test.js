@@ -9,7 +9,7 @@ test ('api', async () => {
 
 describe('api', () => {
   it('should not work', async () => {
-    const res = await request(server).get('/');
+    const res = await request(server).get('/api/products/1');
     expect(res.statusCode).toEqual(200);
   })
 });

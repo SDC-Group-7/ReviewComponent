@@ -1,5 +1,6 @@
 // const models = require('../models/products.js');
 const express = require('express');
+const models = require('../models/products');
 const app = express();
 const port = 8080;
 
