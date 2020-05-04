@@ -5,7 +5,8 @@ const Reviews = require('../controllers/reviews');
 const app = express();
 
 app.get('/api/products/:product_id', (req, res) => {
-  Products.getProduct(req.params.product_id)
+  const productId = req.params.product_id;
+  Products.getProduct(productId)
     .then((product) => {
       if (product.length === 0) {
         res.status(404).send('Product not found');
