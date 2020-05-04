@@ -1,4 +1,4 @@
-import "regenerator-runtime/runtime";
+import 'regenerator-runtime/runtime';
 import supertest from 'supertest';
 
 import db from '../../db';
@@ -25,7 +25,7 @@ describe('tests api', () => {
     const res = await request.get('/api/products/null');
     expect(res.statusCode).toEqual(404);
     done();
-  })
+  });
 
   // Test review apis
   it('should get a review', async (done) => {
@@ -37,7 +37,7 @@ describe('tests api', () => {
   });
 
   it('should 404 if the id does not exist', async (done) => {
-    const res = await request.get(`/api/products/0/reviews`);
+    const res = await request.get('/api/products/0/reviews');
     expect(res.statusCode).toEqual(404);
     done();
   });

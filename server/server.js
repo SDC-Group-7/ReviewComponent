@@ -1,6 +1,6 @@
 const express = require('express');
-const Products= require('../models/products');
-const Reviews= require('../models/reviews');
+const Products = require('../models/products');
+const Reviews = require('../models/reviews');
 
 const app = express();
 
