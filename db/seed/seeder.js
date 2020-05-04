@@ -30,9 +30,10 @@ helpers.addUsers(data.users, db)
     }
   })
   .then(async () => {
-    for (let i = 0; i < 20; i += 1) {
+    for (let i = 1; i <= 100; i += 1) {
       // Insert 5 unique reviews times
-      await helpers.addReviews(data.reviews, db);
+      const numberOfReviews = Math.floor(Math.random() * 5);
+      await helpers.addReviews(data.reviews.slice(numberOfReviews), i, db);
     }
   })
   .then(async () => {
