@@ -3,7 +3,7 @@ import React from 'react';
 import ReviewInfos from './ReviewInfos';
 import ReviewExperience from './ReviewExperience';
 import ReviewHelpfulness from './ReviewHelpfulness';
-import Rating from '../../shared/Rating';
+// import Rating from '../../shared/Rating';
 
 const ReviewsListItem = () => (
   <div className="review">
@@ -11,7 +11,7 @@ const ReviewsListItem = () => (
       Date
     </span>
     <span className="review__rating-bar">
-      <Rating />
+      {/* <Rating /> */}
     </span>
     <span className="review__subject">
       Subject
