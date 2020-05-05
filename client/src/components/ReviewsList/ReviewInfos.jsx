@@ -1,7 +1,7 @@
 import React from 'react';
 
 const ReviewInfos = () => (
-  <div className="review-infos">
+  <div className="review__body-infos col">
     <span className="review-infos__description">
       Lorem Ipsum
     </span>

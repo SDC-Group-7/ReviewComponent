@@ -1,3 +1,46 @@
 body {
   background-color: yellow;
 }
+
+.col {
+  margin: 1rem 0;
+}
+
+.reviews-list {
+  display: flex;
+  flex-direction: column;
+}
+
+.reviews-list__title {
+  margin: 1rem 0;
+}
+
+.reviews-list__filter {
+  margin: 1rem 0;
+}
+
+.review {
+  display: flex;
+  flex-direction: column;
+}
+
+.review__body {
+  display: flex;
+  justify-content: space-between;
+}
+
+.review__body-infos {
+  display: flex;
+  flex-direction: column;
+}
+
+.helpfulness-count {
+  display: flex;
+}
+
+.helpfulness-count__helpful {
+  margin: 1rem;
+}
+.helpfulness-count__not-helpful {
+  margin: 1rem;
+}

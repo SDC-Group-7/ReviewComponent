@@ -2,8 +2,11 @@ import React from 'react';
 
 const ReviewHelpfulness = () => (
   <div className="review__helpfulness">
-    <div className="is-helpful"></div>
-    <div className="is-not-helpful"></div>
+    <h5 className="title">Was this helpful?</h5>
+    <div className="helpfulness-count">
+      <div className="helpfulness-count__helpful">helpful 10</div>
+      <div className="helpfulness-count__not-helpful">not helpful 1</div>
+    </div>
   </div>
 );
 

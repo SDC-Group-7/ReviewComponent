@@ -4,15 +4,17 @@ import ReviewsListItem from './ReviewsListItem';
 
 const ReviewsList = () => {
   return (
-    <div className="reviews">
-      <h2 className="title">
+    <>
+      <h2 className="reviews-list__title">
         Reviews
       </h2>
-      <div className="filter">
+      <div className="reviews-list__filter">
         Most Relavent
       </div>
-      <ReviewsListItem />
-    </div>
+      <div className="reviews-list">
+        <ReviewsListItem />
+      </div>
+    </>
   );
 };
 
