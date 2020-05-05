@@ -4,11 +4,7 @@ const ROOT_DIR = path.resolve(__dirname);
 
 module.exports = {
   mode: 'development',
-  entry: {
-    main: [
-      path.resolve(ROOT_DIR, 'client/src', 'index.js')
-    ]
-  },
+  entry: path.resolve(ROOT_DIR, 'client', 'src/'),
   output: {
     path: path.join(ROOT_DIR, '/public/dist'),
     filename: 'bundle.js',
@@ -17,6 +13,7 @@ module.exports = {
     rules: [
       {
         test: /\.(js|jsx)?$/,
+        include: path.resolve(ROOT_DIR, 'client/src/'),
         exclude: /node_modules/,
         loader: 'babel-loader',
         query: {
@@ -29,4 +26,7 @@ module.exports = {
       },
     ],
   },
+  resolve: {
+    extensions: ['.js', '.jsx']
+  }
 };
