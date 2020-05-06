@@ -14,30 +14,29 @@ describe('tests api', () => {
   });
 
   // Test product apis
-  it('should get a product', async (done) => {
-    const res = await request.get(`/api/products/${fixture.product.id}`);
-    expect(res.statusCode).toEqual(200);
-    expect(res.body).toEqual(fixture.product);
-    done();
-  });
-
-  it('should 404 if the id does not exist', async (done) => {
-    const res = await request.get('/api/products/null');
-    expect(res.statusCode).toEqual(404);
-    done();
-  });
-
-  // Test review apis
-  it('should get a review', async (done) => {
+  it('should get a reviews for a product', async (done) => {
     const res = await request.get(`/api/products/${fixture.product.id}/reviews`);
-    const review = res.body[0];
+
+    const expectedObjKeys = ['productName', 'reviews', 'count'];
+    const expectedReviewKeys = ['id', 'rating', 'recommended', 'subject', 'isHelpful', 'isNotHelpful', 'experience', 'user'];
+    const expectedExperienceKeys = ['playExperience', 'difficulty', 'value', 'buildTime'];
+    const expectedUserKeys = ['name', 'age'];
+    const review = res.body.reviews[0];
+
     expect(res.statusCode).toEqual(200);
-    expect(review.product_id).toEqual(fixture.product.id);
+    expect(res.body.productName).toEqual('batman');
+    expect(review).toBeDefined();
+    expect(review.experience).toBeDefined();
+    expect(review.user).toBeDefined();
+    expect(Object.keys(res.body)).toEqual(expect.arrayContaining(expectedObjKeys));
+    expect(Object.keys(review)).toEqual(expect.arrayContaining(expectedReviewKeys));
+    expect(Object.keys(review.experience)).toEqual(expect.arrayContaining(expectedExperienceKeys));
+    expect(Object.keys(review.user)).toEqual(expect.arrayContaining(expectedUserKeys));
     done();
   });
 
   it('should 404 if the id does not exist', async (done) => {
-    const res = await request.get('/api/products/0/reviews');
+    const res = await request.get('/api/products/null/reviews');
     expect(res.statusCode).toEqual(404);
     done();
   });
