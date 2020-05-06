@@ -11,7 +11,7 @@
     "reset_db": "mysql -uroot < ./db/lego_schema.sql",
     "seed_db": "npm run reset_db && node ./db/seed/seeder.js",
     "nodemon": "nodemon ./server/index.js",
-    "start": "webpack-dev-server",
+    "start": "webpack -w",
     "build": "webpack — mode production",
     "server": "concurrently -k \"npm run nodemon\" \"npm run start\"",
     "lint": "eslint .",
@@ -23,9 +23,10 @@
     "express": "^4.17.1",
     "mysql": "^2.18.1",
     "nodemon": "^2.0.3",
+    "react": "^16.13.1",
+    "react-dom": "^16.13.1",
     "webpack": "^4.43.0",
-    "webpack-cli": "^3.3.11",
-    "webpack-dev-server": "^3.10.3"
+    "webpack-cli": "^3.3.11"
   },
   "devDependencies": {
     "@babel/cli": "^7.8.4",
@@ -36,6 +37,8 @@
     "babel-loader": "^8.1.0",
     "babel-preset-airbnb": "^5.0.0",
     "css-loader": "^3.5.3",
+    "enzyme": "^3.11.0",
+    "enzyme-adapter-react-16": "^1.15.2",
     "eslint": "^6.8.0",
     "eslint-config-airbnb": "^18.1.0",
     "eslint-config-hackreactor": "git://github.com/reactorcore/eslint-config-hackreactor",

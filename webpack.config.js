@@ -1,20 +1,19 @@
 const path = require('path');
 
+const ROOT_DIR = path.resolve(__dirname);
+
 module.exports = {
   mode: 'development',
-  entry: './client/src/index.js',
+  entry: path.resolve(ROOT_DIR, 'client', 'src/'),
   output: {
-    path: path.join(__dirname, '/client/dist'),
+    path: path.join(ROOT_DIR, '/public/dist'),
     filename: 'bundle.js',
-  },
-  devServer: {
-    inline: true,
-    port: 3000,
   },
   module: {
     rules: [
       {
-        test: /\.jsx?$/,
+        test: /\.(js|jsx)?$/,
+        include: path.resolve(ROOT_DIR, 'client/src/'),
         exclude: /node_modules/,
         loader: 'babel-loader',
         query: {
@@ -27,4 +26,7 @@ module.exports = {
       },
     ],
   },
+  resolve: {
+    extensions: ['.js', '.jsx']
+  }
 };

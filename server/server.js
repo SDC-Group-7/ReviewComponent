@@ -4,6 +4,13 @@ const Reviews = require('../controllers/reviews');
 
 const app = express();
 
+app.use(express.static('public'));
+
+app.use((req, res, next) => {
+  console.log(`Incoming ${req.method} request to ${req.path}`);
+  next();
+});
+
 app.get('/api/products/:product_id', (req, res) => {
   const productId = req.params.product_id;
   Products.getProduct(productId)
