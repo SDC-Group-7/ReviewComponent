@@ -1,6 +1,11 @@
-const getProductData = function (data) {
+const getReviewsData = function (data) {
+  if (data.length === 0) {
+    return {};
+  }
+
   const reviews = data.map(data=> {
     return {
+      id: data.id,
       rating: data.rating,
       recommended: data.recommended,
       subject: data.subject,
@@ -19,14 +24,13 @@ const getProductData = function (data) {
     };
   });
 
-  const product = {
-    name: data[0].product_name,
+  return {
+    productName: data[0].product_name,
+    count: reviews.length,
     reviews
   };
-
-  return product;
 };
 
 module.exports = {
-  getProductData,
+  getReviewsData,
 }
