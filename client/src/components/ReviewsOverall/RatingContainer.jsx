@@ -1,7 +1,7 @@
 import React from 'react';
 
 const RatingContainer = () => (
-  <div>TODO</div>
+  <div className="col">TODO</div>
 );
 
 export default RatingContainer;
