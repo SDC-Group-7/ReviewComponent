@@ -12,7 +12,7 @@ class ReviewsOverview extends Component {
   render() {
     return (
       <div className="reviews-overview">
-        <h1 className="reivews-overview__title">Customer Reviews</h1>
+        <h1 className="reviews-overview__title">Customer Reviews</h1>
         <ReviewsOverall />
         <ReviewsList />
       </div>
