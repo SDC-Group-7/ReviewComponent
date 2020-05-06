@@ -1,5 +1,5 @@
-const getProduct = async (productId) => {
-  const url = `/api/products/${productId}`;
+const getReviews = async (productId) => {
+  const url = `/api/products/${productId}/reviews`;
   const res = await fetch(url, {
     method: 'GET',
     headers: {
@@ -7,9 +7,8 @@ const getProduct = async (productId) => {
       'Content-type': 'application/json'
     },
     credentials: 'same-origin',
-    body: JSON.stringify
   });
   return res.json();
 };
 
-module.exports = { getProduct };
+export default { getReviews };
