@@ -1,5 +1,5 @@
 body {
-  background-color: yellow;
+  background-color: darkgray;
 }
 
 
@@ -15,3 +15,8 @@ body {
   border-radius: 4px;
   line-height: 1.2rem;
 }
+
+.col {
+  margin: 1rem 0;
+}
+

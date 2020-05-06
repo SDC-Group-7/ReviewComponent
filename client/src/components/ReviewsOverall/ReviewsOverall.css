@@ -43,16 +43,3 @@
  margin: 1rem 1rem 1.25rem;
   width: auto;
 }
-
-.btn {
-  background-color: blue;
-  border-collapse: collapse;
-  font-weight: 500;
-  font-size: .875rem;
-  text-align: center;
-  color: white;
-  padding: 1rem;
-  border: 1px solid blue;
-  border-radius: 4px;
-  line-height: 1.2rem;
-}
