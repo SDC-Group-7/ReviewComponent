@@ -16,11 +16,22 @@ describe('tests api', () => {
   // Test product apis
   it('should get a reviews for a product', async (done) => {
     const res = await request.get(`/api/products/${fixture.product.id}/reviews`);
+
+    const expectedObjKeys = ['productName', 'reviews', 'count'];
+    const expectedReviewKeys = ['id', 'rating', 'recommended', 'subject', 'isHelpful', 'isNotHelpful', 'experience', 'user'];
+    const expectedExperienceKeys = ['playExperience', 'difficulty', 'value', 'buildTime'];
+    const expectedUserKeys = ['name', 'age'];
+    const review = res.body.reviews[0];
+
     expect(res.statusCode).toEqual(200);
     expect(res.body.productName).toEqual('batman');
-    expect(res.body.reviews).toBeDefined();
-    expect(res.body.reviews[0].experience).toBeDefined();
-    expect(res.body.reviews[0].user).toBeDefined();
+    expect(review).toBeDefined();
+    expect(review.experience).toBeDefined();
+    expect(review.user).toBeDefined();
+    expect(Object.keys(res.body)).toEqual(expect.arrayContaining(expectedObjKeys));
+    expect(Object.keys(review)).toEqual(expect.arrayContaining(expectedReviewKeys));
+    expect(Object.keys(review.experience)).toEqual(expect.arrayContaining(expectedExperienceKeys));
+    expect(Object.keys(review.user)).toEqual(expect.arrayContaining(expectedUserKeys));
     done();
   });
 
