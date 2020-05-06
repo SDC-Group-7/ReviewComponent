@@ -14,10 +14,10 @@ describe('tests api', () => {
   });
 
   // Test product apis
-  it('should get a product', async (done) => {
-    const res = await request.get(`/api/products/${fixture.product.id}`);
+  it('should get a reviews for a product', async (done) => {
+    const res = await request.get(`/api/products/${fixture.product.id}/reviews`);
     expect(res.statusCode).toEqual(200);
-    expect(res.body.name).toEqual('batman');
+    expect(res.body.productName).toEqual('batman');
     expect(res.body.reviews).toBeDefined();
     expect(res.body.reviews[0].experience).toBeDefined();
     expect(res.body.reviews[0].user).toBeDefined();
@@ -25,7 +25,7 @@ describe('tests api', () => {
   });
 
   it('should 404 if the id does not exist', async (done) => {
-    const res = await request.get('/api/products/null');
+    const res = await request.get('/api/products/null/reviews');
     expect(res.statusCode).toEqual(404);
     done();
   });

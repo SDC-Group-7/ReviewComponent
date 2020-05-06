@@ -1,5 +1,4 @@
 const express = require('express');
-const Products = require('../controllers/products');
 const Reviews = require('../controllers/reviews');
 
 const app = express();
@@ -11,18 +10,18 @@ app.use((req, res, next) => {
   next();
 });
 
-app.get('/api/products/:product_id', (req, res) => {
+app.get('/api/products/:product_id/reviews', (req, res) => {
   const productId = req.params.product_id;
-  Products.getProduct(productId)
-    .then((product) => {
-      if (product.length === 0) {
-        res.status(404).send('Product not found');
+  Reviews.getReviewsForProduct(productId)
+    .then((reviews) => {
+      if (reviews.count === undefined) {
+        throw 'Reviews not found';
       } else {
-        res.status(200).json(product);
+        res.status(200).json(reviews);
       }
     })
     .catch((err) => {
-      res.status(500).send(err);
+      res.status(404).send(err);
     });
 });
 
