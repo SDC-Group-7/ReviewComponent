@@ -17,11 +17,18 @@ body {
 
 .reviews-list__filter {
   margin: 1rem 0;
+  border: 1px solid rgb(224, 224, 224);
+  padding: .75rem 0 .75rem 1.25rem;
+  height: 3.45rem;
+  align-items: center;
+  display: flex;
 }
 
 .review {
   display: flex;
   flex-direction: column;
+    padding: 1.5rem 0;
+    border-top: 1px solid rgb(224, 224, 224);
 }
 
 .review__body {
