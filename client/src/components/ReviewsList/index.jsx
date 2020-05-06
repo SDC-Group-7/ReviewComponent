@@ -2,7 +2,7 @@ import React from 'react';
 
 import ReviewsListItem from './ReviewsListItem';
 
-const ReviewsList = () => {
+const ReviewsList = ({reviews}) => {
   return (
     <>
       <h2 className="reviews-list__title">
@@ -12,7 +12,11 @@ const ReviewsList = () => {
         Most Relavent
       </div>
       <div className="reviews-list">
-        <ReviewsListItem />
+        {
+          reviews.map(review => (
+            <ReviewsListItem key={review.id} />
+          ))
+        }
       </div>
     </>
   );
