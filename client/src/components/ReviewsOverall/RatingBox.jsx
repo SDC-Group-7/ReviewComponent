@@ -2,7 +2,7 @@ import React from 'react';
 
 const RatingBox = () => (
   <button className="rating-box">
-    <span>5 stats</span>
+    <span>5 stars</span>
     {/* TODO <ProgressBar /> */}
     progress bar
     <span>28</span>

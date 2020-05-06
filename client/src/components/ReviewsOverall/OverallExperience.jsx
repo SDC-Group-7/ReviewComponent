@@ -18,7 +18,6 @@ const OverallExperience = () => (
       Value for Money
     </span>
     <RatingContainer />
-
   </div>
 );
 
