@@ -1,6 +1,4 @@
-import 'regenerator-runtime/runtime';
 import supertest from 'supertest';
-
 import db from '../../db';
 import server from '../server';
 import fixture from '../../legos/fixtures';
@@ -13,7 +11,7 @@ describe('tests api', () => {
     done();
   });
 
-  // Test product apis
+  // Test reviews apis
   it('should get a reviews for a product', async (done) => {
     const res = await request.get(`/api/products/${fixture.product.id}/reviews`);
 
