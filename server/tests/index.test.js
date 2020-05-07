@@ -16,7 +16,7 @@ describe('tests api', () => {
     const res = await request.get(`/api/products/${fixture.id}/reviews`);
 
     const expectedObjKeys = ['productName', 'reviews', 'count'];
-    const expectedReviewKeys = ['id', 'rating', 'recommended', 'subject', 'isHelpful', 'isNotHelpful', 'experience', 'user'];
+    const expectedReviewKeys = ['id', 'createdAt', 'rating', 'recommended', 'subject', 'isHelpful', 'isNotHelpful', 'experience', 'user'];
     const expectedExperienceKeys = ['playExperience', 'difficulty', 'value', 'buildTime'];
     const expectedUserKeys = ['name', 'age'];
     const review = res.body.reviews[0];

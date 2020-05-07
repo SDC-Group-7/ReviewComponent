@@ -6,6 +6,7 @@ const fixture =
   reviews: [
     {
       id: 1,
+      createdAt: 'Janurary 1, 2020',
       rating: 4,
       recommended: 1,
       subject: 'lorum ipsum 3',
@@ -16,6 +17,7 @@ const fixture =
       user: { name: 'Lonna', age: 104 }
     }, {
       id: 2,
+      createdAt: 'Janurary 1, 2020',
       rating: 1,
       recommended: null,
       subject: 'lorum ipsum 4',
@@ -25,6 +27,7 @@ const fixture =
       user: { name: 'Casey', age: 57 }
     }, {
       id: 3,
+      createdAt: 'Janurary 1, 2020',
       rating: 2,
       recommended: null,
       subject: 'lorum ipsum 5',
