@@ -2,7 +2,7 @@ import React from 'react';
 
 const Marker = () => (
   // TODO
-  <div></div>
+  <div>Marker</div>
 );
 
 export default Marker;
