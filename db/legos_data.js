@@ -24,19 +24,19 @@ const experiences = [
 
 const reviews = [
   {
-    rating: 5, recommended: 1, subject: 'lorum ipsum 1', is_helpful: 5, is_not_helpful: 1, product_id: 1, experience_id: 1, user_id: 1,
+    rating: 5, recommended: 1, subject: 'lorum ipsum 1', is_helpful: 5, is_not_helpful: 1, product_id: 1, experience_id: 1, user_id: 1, created_at: '2020-01-01',
   },
   {
-    rating: 4, recommended: 1, subject: 'lorum ipsum 2', is_helpful: 3, is_not_helpful: 4, product_id: 1, experience_id: 2, user_id: 2,
+    rating: 4, recommended: 1, subject: 'lorum ipsum 2', is_helpful: 3, is_not_helpful: 4, product_id: 1, experience_id: 2, user_id: 2, created_at: '2020-01-01',
   },
   {
-    rating: 4, recommended: 1, subject: 'lorum ipsum 3', is_helpful: 0, is_not_helpful: 9, product_id: 1, experience_id: 3, user_id: 3,
+    rating: 4, recommended: 1, subject: 'lorum ipsum 3', is_helpful: 0, is_not_helpful: 9, product_id: 1, experience_id: 3, user_id: 3, created_at: '2020-01-01',
   },
   {
-    rating: 1, recommended: null, subject: 'lorum ipsum 4', is_helpful: 5, is_not_helpful: 1, product_id: 1, experience_id: 4, user_id: 4,
+    rating: 1, recommended: null, subject: 'lorum ipsum 4', is_helpful: 5, is_not_helpful: 1, product_id: 1, experience_id: 4, user_id: 4, created_at: '2020-01-01',
   },
   {
-    rating: 2, recommended: null, subject: 'lorum ipsum 5', is_helpful: 2, is_not_helpful: 1, product_id: 1, experience_id: 5, user_id: 5,
+    rating: 2, recommended: null, subject: 'lorum ipsum 5', is_helpful: 2, is_not_helpful: 1, product_id: 1, experience_id: 5, user_id: 5, created_at: '2020-01-01',
   },
 ];
 

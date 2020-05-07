@@ -5,23 +5,27 @@ import ReviewExperience from './ReviewExperience';
 import ReviewHelpfulness from './ReviewHelpfulness';
 import Rating from '../../shared/Rating';
 
-const ReviewsListItem = () => (
+const ReviewsListItem = ({review}) => (
   <div className="review">
     <span className="review__date col">
-      Date
+      {review.createdAt}
     </span>
     <span className="review__rating-bar col">
       <Rating />
     </span>
     <span className="review__subject col">
-      Subject
+      {review.subject}
     </span>
     <span className="review__user col">
-      Shoji
+      {review.user.name}
     </span>
-    <span className="review__recommendation col">
-      I would recommend this to a friend
-    </span>
+    {
+      review.recommended ? (
+        <span className="review__recommendation col">
+          I would recommend this to a friend
+        </span>
+      ) : null
+    }
     <div className="review__body col">
       <ReviewInfos />
       <ReviewExperience />

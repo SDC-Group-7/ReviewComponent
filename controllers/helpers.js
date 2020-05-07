@@ -1,3 +1,5 @@
+const helpers = require('../legos/helpers');
+
 const getReviewsData = function (data) {
   if (data.length === 0) {
     return {};
@@ -6,6 +8,7 @@ const getReviewsData = function (data) {
   const reviews = data.map(data=> {
     return {
       id: data.id,
+      createdAt: helpers.parseDate(data.created_at),
       rating: data.rating,
       recommended: data.recommended,
       subject: data.subject,
@@ -33,4 +36,4 @@ const getReviewsData = function (data) {
 
 module.exports = {
   getReviewsData,
-}
+};

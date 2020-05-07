@@ -1,6 +1,4 @@
-import 'regenerator-runtime/runtime';
 import supertest from 'supertest';
-
 import db from '../../db';
 import server from '../server';
 import fixture from '../../legos/fixtures';
@@ -13,12 +11,12 @@ describe('tests api', () => {
     done();
   });
 
-  // Test product apis
+  // Test reviews apis
   it('should get a reviews for a product', async (done) => {
-    const res = await request.get(`/api/products/${fixture.product.id}/reviews`);
+    const res = await request.get(`/api/products/${fixture.id}/reviews`);
 
     const expectedObjKeys = ['productName', 'reviews', 'count'];
-    const expectedReviewKeys = ['id', 'rating', 'recommended', 'subject', 'isHelpful', 'isNotHelpful', 'experience', 'user'];
+    const expectedReviewKeys = ['id', 'createdAt', 'rating', 'recommended', 'subject', 'isHelpful', 'isNotHelpful', 'experience', 'user'];
     const expectedExperienceKeys = ['playExperience', 'difficulty', 'value', 'buildTime'];
     const expectedUserKeys = ['name', 'age'];
     const review = res.body.reviews[0];

@@ -28,7 +28,7 @@ const addProducts = async (products, db) => {
 };
 
 const addReviews = async (reviews, productId, db) => {
-  const queryString = 'INSERT INTO reviews (rating, recommended, subject, is_helpful, is_not_helpful, experience_id, user_id, product_id) VALUES (?, ?, ?, ?, ?, ?, ?, ?)';
+  const queryString = 'INSERT INTO reviews (rating, recommended, subject, is_helpful, is_not_helpful, experience_id, user_id, created_at, product_id) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?)';
   await Promise.map(reviews, (review) => {
     const values = [
       review.rating,
@@ -38,6 +38,7 @@ const addReviews = async (reviews, productId, db) => {
       review.is_not_helpful,
       review.experience_id,
       review.user_id,
+      review.created_at,
       productId,
     ];
     return db.connection.query(queryString, values);

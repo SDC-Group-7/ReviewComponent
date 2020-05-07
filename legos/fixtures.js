@@ -1,19 +1,42 @@
-const fixture = {
-  product: { id: 1, name: 'batman' },
-  review: {
-    id: 1, rating: 5, recommended: 1, subject: 'lorum ipsum 1', isHelpful: 5, isNotHelpful: 1, productId: 1, experienceId: 1, userId: 1,
-  },
-  experience: {
-    id: 1, playExperience: 4, difficulty: 4, value: 5, buildTime: 5,
-  },
-  user: {
-    id: 1, name: 'Adolph', age: 97
-  },
-  images: [
-    {id: 1, url: 'localhost', reviewId: 1 },
-    {id: 2, url: 'localhost', reviewId: 1 },
-    {id: 3, url: 'localhost', reviewId: 1 },
-  ]
+const fixture =
+{
+  productName: 'batman',
+  id: 1,
+  count: 3,
+  reviews: [
+    {
+      id: 1,
+      createdAt: 'Janurary 1, 2020',
+      rating: 4,
+      recommended: 1,
+      subject: 'lorum ipsum 3',
+      isHelpful: 0,
+      isNotHelpful: 9,
+      experience:
+      { playExperience: 4, difficulty: 2, value: 4, buildTime: 18 },
+      user: { name: 'Lonna', age: 104 }
+    }, {
+      id: 2,
+      createdAt: 'Janurary 1, 2020',
+      rating: 1,
+      recommended: null,
+      subject: 'lorum ipsum 4',
+      isHelpful: 5,
+      isNotHelpful: 1,
+      experience: { playExperience: 4, difficulty: 1, value: 3, buildTime: 2 },
+      user: { name: 'Casey', age: 57 }
+    }, {
+      id: 3,
+      createdAt: 'Janurary 1, 2020',
+      rating: 2,
+      recommended: null,
+      subject: 'lorum ipsum 5',
+      isHelpful: 2,
+      isNotHelpful: 1,
+      experience:
+      { playExperience: 5, difficulty: 5, value: 5, buildTime: 15 },
+      user: { name: 'Alvaro', age: 75 }
+    }]
 };
 
 module.exports = fixture;
