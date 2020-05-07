@@ -15,7 +15,8 @@
     "build": "webpack — mode production",
     "server": "concurrently -k \"npm run nodemon\" \"npm run start\"",
     "lint": "eslint .",
-    "test": "jest"
+    "test": "jest",
+    "test-w": "jest . --watch"
   },
   "dependencies": {
     "bluebird": "^3.7.2",
