@@ -8,7 +8,7 @@ import Rating from '../../shared/Rating';
 const ReviewsListItem = ({review}) => (
   <div className="review">
     <span className="review__date col">
-      Date
+      {review.createdAt}
     </span>
     <span className="review__rating-bar col">
       <Rating />

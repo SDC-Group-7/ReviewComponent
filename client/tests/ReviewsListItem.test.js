@@ -8,7 +8,7 @@ const wrapper = shallow(<ReviewsListItem review={review}/>);
 
 describe('Test ReviewsListItem', () => {
   it('should have the correct date', () => {
-    expect(wrapper.find('.review__date').text()).toEqual('Date'); // TODO add a date to the table
+    expect(wrapper.find('.review__date').text()).toEqual(review.createdAt);
   });
 
   it('should have the render rating', () => {

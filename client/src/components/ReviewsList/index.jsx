@@ -14,7 +14,7 @@ const ReviewsList = ({reviews}) => {
       <div className="reviews-list">
         {
           reviews.map(review => (
-            <ReviewsListItem key={review.id} />
+            <ReviewsListItem key={review.id} review={review} />
           ))
         }
       </div>
