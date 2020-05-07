@@ -32,6 +32,10 @@ describe('Test ReviewsListItem', () => {
   it('should show recommended', () => {
     expect(wrapper.find('.review__recommendation').text()).toBe('I would recommend this to a friend');
   });
+
+  it('should shallow render ReviewInfos', () => {
+    expect(wrapper.find('ReviewInfos').exists()).toBe(true);
+  });
 });
 
 
