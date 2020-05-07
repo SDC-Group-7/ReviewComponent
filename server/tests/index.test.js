@@ -13,7 +13,7 @@ describe('tests api', () => {
 
   // Test reviews apis
   it('should get a reviews for a product', async (done) => {
-    const res = await request.get(`/api/products/${fixture.product.id}/reviews`);
+    const res = await request.get(`/api/products/${fixture.id}/reviews`);
 
     const expectedObjKeys = ['productName', 'reviews', 'count'];
     const expectedReviewKeys = ['id', 'rating', 'recommended', 'subject', 'isHelpful', 'isNotHelpful', 'experience', 'user'];

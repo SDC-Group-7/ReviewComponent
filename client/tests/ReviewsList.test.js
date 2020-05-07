@@ -15,5 +15,3 @@ describe('Tests ReviewsList', () => {
     expect(wrapper.find('ReviewsListItem').length).toBe(expectedReviewCount);
   });
 });
-
-
