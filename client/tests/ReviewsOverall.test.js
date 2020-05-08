@@ -5,7 +5,6 @@ import ReviewsOverall from '../src/components/ReviewsOverall';
 import ReviewsStatistics from '../src/components/ReviewsOverall/ReviewsStatistics';
 import OverallExperience from '../src/components/ReviewsOverall/OverallExperience';
 
-
 describe('Test ReviewsOverall', () => {
   const overallWrapper = mount(<ReviewsOverall />);
   it('should render', () => {
@@ -14,9 +13,13 @@ describe('Test ReviewsOverall', () => {
 });
 
 describe('Test ReviewsStatistics', () => {
-  const statisticsWrapper = mount(<ReviewsStatistics reviews={fixture.reviews}/>);
+  let statisticsWrapper;
+  beforeEach(() => {
+    statisticsWrapper = mount(<ReviewsStatistics reviews={fixture.reviews}/>);
+  });
+
   it('should render', () => {
-    expect(statisticsWrapper.exists('.reviews-statistics')).toBe(true);
+    expect(statisticsWrapper.find('.reviews-statistics').exists()).toBe(true);
   });
 
   it('should have the reviews props', () => {
@@ -31,12 +34,12 @@ describe('Test ReviewsStatistics', () => {
       return total + review.rating;
     }, 0);
 
-    const averageRatings = totalRatings / fixture.reviews.length;
+    const averageRatings = Math.round((totalRatings / fixture.reviews.length) * 10) / 10;
 
     // once i get the reviews, I want to mount the ocmponent
     // check the overall rating and match it
 
-    expect(statisticsWrapper.find('reviews-statistics__title').contains(totalRatings)).toBe(true);
+    expect(statisticsWrapper.find('.rating-box__rating').first().contains(averageRatings)).toBe(true);
   });
 
   // I need to write a test
