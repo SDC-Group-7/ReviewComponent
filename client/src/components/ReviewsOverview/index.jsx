@@ -29,8 +29,17 @@ class ReviewsOverview extends Component {
     return (
       <div className="reviews-overview">
         <h1 className="reviews-overview__title">Customer Reviews</h1>
-        <ReviewsOverall reviews={reviews}/>
-        <ReviewsList reviews={reviews} />
+        {reviews.length ? (
+          <>
+            <ReviewsOverall reviews={reviews}/>
+            <ReviewsList reviews={reviews} />
+          </>
+        ) : (
+          <>
+            <span> Be the first to</span>
+            <button className="btn">Write a review</button>
+          </>
+        )}
       </div>
     );
   }

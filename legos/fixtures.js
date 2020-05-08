@@ -28,7 +28,7 @@ const fixture =
     }, {
       id: 3,
       createdAt: 'Janurary 1, 2020',
-      rating: 2,
+      rating: 4,
       recommended: null,
       subject: 'lorum ipsum 5',
       isHelpful: 2,
@@ -36,7 +36,22 @@ const fixture =
       experience:
       { playExperience: 5, difficulty: 5, value: 5, buildTime: 15 },
       user: { name: 'Alvaro', age: 75 }
-    }]
+    }],
 };
+
+const aggregatedReview = {
+  countFiveReviews: 0,
+  countFourReviews: 2,
+  countThreeReviews: 0,
+  countTwoReviews: 0,
+  countOneReviews: 1,
+  avgPlayExperience: '4.4',
+  avgDifficulty: '2.7',
+  avgValue: '4',
+  avgRating: 3,
+  avgRecommendation: '33.3',
+  totalReviews: 3
+};
+fixture.aggregatedReview = aggregatedReview;
 
 module.exports = fixture;

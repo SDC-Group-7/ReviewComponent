@@ -1,12 +1,12 @@
 import React from 'react';
-import { mount } from 'enzyme';
+import { shallow, mount } from 'enzyme';
 import fixture from '../../legos/fixtures';
 import ReviewsOverall from '../src/components/ReviewsOverall';
 import ReviewsStatistics from '../src/components/ReviewsOverall/ReviewsStatistics';
 import OverallExperience from '../src/components/ReviewsOverall/OverallExperience';
 
 describe('Test ReviewsOverall', () => {
-  const overallWrapper = mount(<ReviewsOverall />);
+  const overallWrapper = shallow(<ReviewsOverall reviews={fixture.reviews}/>);
   it('should render', () => {
     expect(overallWrapper.exists('.reviews-overall')).toBe(true);
   });
@@ -26,25 +26,23 @@ describe('Test ReviewsStatistics', () => {
     expect(statisticsWrapper.prop('reviews')).toEqual(fixture.reviews);
   });
 
-  it('should have aggregated ratings', () => {
-    // this should test that the ratings have been aggrevated
-    // it should do this by getting all of the reviews and dividing them by the number of reviews to get the average
-
-    const totalRatings = fixture.reviews.reduce((total, review) => {
-      return total + review.rating;
-    }, 0);
-
-    const averageRatings = Math.round((totalRatings / fixture.reviews.length) * 10) / 10;
-
-    // once i get the reviews, I want to mount the ocmponent
-    // check the overall rating and match it
-
-    expect(statisticsWrapper.find('.rating-box__rating').first().contains(averageRatings)).toBe(true);
+  it('should have aggregated overall ratings the star rating box', () => {
+    expect(statisticsWrapper.find('.rating-container__display').contains(fixture.aggregatedReview.avgRating)).toBe(true);
   });
 
-  // I need to write a test
-  // this test will check that the aggregated data has all the right values
+  it('should have aggregated recommendation percent', () => {
+    expect(statisticsWrapper.find('.reviews-statistics__recommendation').contains(fixture.aggregatedReview.avgRecommendation)).toBe(true);
+  });
 
+  it('should have aggregated review data for 5 star reviews, 0 reviews', () => {
+    console.log(fixture.aggregatedReview);
+    expect(statisticsWrapper.find('.rating-box__count').at(0).prop('children')).toEqual(fixture.aggregatedReview.countFiveReviews);
+  });
+
+  it('should have aggregated review data for 4 star reviews, 1 reviews', () => {
+    console.log(fixture.aggregatedReview);
+    expect(statisticsWrapper.find('.rating-box__count').at(1).prop('children')).toEqual(fixture.aggregatedReview.countFourReviews);
+  });
 });
 
 describe('Test OverallExperience', () => {

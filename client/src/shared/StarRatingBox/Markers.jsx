@@ -1,8 +1,8 @@
 import React from 'react';
 
-const Marker = () => (
+const Markers = () => (
   // TODO
   <div>Marker</div>
 );
 
-export default Marker;
+export default Markers;
