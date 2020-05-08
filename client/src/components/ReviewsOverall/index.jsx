@@ -3,7 +3,6 @@ import React from 'react';
 import ReviewsStatistics from './ReviewsStatistics';
 
 const ReviewsOverall = ({reviews}) => {
-  console.log(reviews);
   return (
     <div className="reviews-overall">
       <ReviewsStatistics reviews={reviews}/>

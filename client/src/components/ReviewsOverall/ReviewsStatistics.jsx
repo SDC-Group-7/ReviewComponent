@@ -16,12 +16,11 @@ const aggregateData = function (data) {
   // average of value for money
 
   // average of overall rating
-  console.log(data);
   const totalRatings = data.reduce((total, review) => {
     return total + review.rating;
   }, 0);
 
-  const overallRating = totalRatings / data.length;
+  const overallRating = Math.round((totalRatings / data.length) * 10) / 10;
 
 
   // average of recommendation
@@ -29,6 +28,7 @@ const aggregateData = function (data) {
   // total number of reviews
   return {
     overallRating: overallRating || 0,
+    reviewCount: data.length,
   };
 };
 
@@ -36,14 +36,14 @@ const ReviewsStatistics = (props) => {
   const {
     reviews
   } = props;
-  const overallStatistics = aggregateData(reviews);
+  const { overallRating, reviewCount } = aggregateData(reviews);
   return (
     <div className="reviews-statistics">
       <span className="reviews-statistics__title">
         Overall Rating:
-        {overallStatistics.overallRating}
       </span>
-      {/* <span styles="color:green">
+      <RatingBox rating={overallRating} count={reviewCount}/>
+      <span>
         91% would recommend this product.
       </span>
       <div className="reviews-statistics__overall-breakdown">
@@ -58,14 +58,14 @@ const ReviewsStatistics = (props) => {
           <RatingBox />
         </div>
         <OverallExperience />
-      </div> */}
+      </div>
     </div>
   );
 };
 
 ReviewsStatistics.defaultProps = {
   reviews: [{
-    rating: 97987987987985
+    rating: 0
   }]
 };
 
