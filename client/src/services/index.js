@@ -1,6 +1,7 @@
+
 const getReviews = async (productId) => {
-  const url = `/api/products/${productId}/reviews`;
-  const res = await fetch(url, {
+  const apiUrl = `http://localhost:8080/api/products/${productId}/reviews`;
+  const res = await fetch(apiUrl, {
     method: 'GET',
     headers: {
       Accept: 'application/json',
