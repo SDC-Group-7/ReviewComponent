@@ -45,12 +45,14 @@ const aggregatedReview = {
   countThreeReviews: 0,
   countTwoReviews: 0,
   countOneReviews: 1,
-  avgPlayExperience: '4.4',
-  avgDifficulty: '2.7',
-  avgValue: '4',
   avgRating: 3,
   avgRecommendation: '33.3',
-  totalReviews: 3
+  totalReviews: 3,
+  experiences: {
+    playExperience: '4.4',
+    difficulty: '2.7',
+    value: '4',
+  },
 };
 fixture.aggregatedReview = aggregatedReview;
 
