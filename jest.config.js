@@ -32,6 +32,7 @@ module.exports = {
     'node'
   ],
 
+
   // The paths to modules that run some code to configure or set up the testing environment before each test
   setupFiles: ['<rootDir>/enzyme.config.js'],
 
@@ -42,13 +43,24 @@ module.exports = {
   testEnvironment: 'jsdom',
 
   // Options that will be passed to the testEnvironment
-  // testEnvironmentOptions: {},
+  testEnvironmentOptions: {
+    host: process.env.HOST,
+    user: process.env.DB_USER,
+    password: process.env.DB_PASS,
+    database: 'test'
+  },
 
   // The glob patterns Jest uses to detect test files
   // testMatch: [
   //   "**/__tests__/**/*.[jt]s?(x)",
   //   "**/?(*.)+(spec|test).[tj]s?(x)"
   // ],
+
+  transform: {
+    '^.+\\.jsx?$': 'babel-jest',
+    '\\.(jpg|jpeg|png|gif|eot|otf|webp|svg|ttf|woff|woff2|mp4|webm|wav|mp3|m4a|aac|oga)$':
+      '<rootDir>/assetsTransformer.js',
+  },
 
   // An array of regexp pattern strings that are matched against all test paths, matched tests are skipped
   testPathIgnorePatterns: [
