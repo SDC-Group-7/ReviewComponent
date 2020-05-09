@@ -53,16 +53,15 @@ describe('Test OverallExperience', () => {
   it('should render', () => {
     expect(overallExperienceWrapper.exists('.overall-experience')).toBe(true);
   });
-  // Tests these with aggregated data
-  // test that play experience is rendered
+
   it('should test that overall experience is rendered', () => {
     expect(overallExperienceWrapper.find('.rating-container__display').at(0).props().children).toEqual(experiences.playExperience);
   });
-  // test that level of difficult is rendered
+
   it('should test that overall difficulty is rendered', () => {
     expect(overallExperienceWrapper.find('.rating-container__display').at(1).props().children).toEqual(experiences.difficulty);
   });
-  // test the value for money is rendered
+
   it('should test that overall value is rendered', () => {
     expect(overallExperienceWrapper.find('.rating-container__display').at(2).props().children).toEqual(experiences.value);
   });
