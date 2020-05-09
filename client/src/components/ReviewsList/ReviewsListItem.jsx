@@ -3,7 +3,7 @@ import React from 'react';
 import ReviewInfos from './ReviewInfos';
 import ReviewExperience from './ReviewExperience';
 import ReviewHelpfulness from './ReviewHelpfulness';
-import StarRatingBox from '../../shared/StarRatingBox';
+import Ratings from '../../shared/Ratings';
 
 const ReviewsListItem = ({review}) => (
   <div className="review">
@@ -11,7 +11,7 @@ const ReviewsListItem = ({review}) => (
       {review.createdAt}
     </span>
     <span className="review__rating-bar col">
-      <StarRatingBox rating={review.rating} />
+      <Ratings rating={review.rating} />
     </span>
     <span className="review__subject col">
       {review.subject}

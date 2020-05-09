@@ -1,20 +1,20 @@
 import React from 'react';
 
-// import Rating from '../../shared/StarRatingBox';
+// import Rating from '../../shared/Ratings';
 
 const ReviewExperience = () => (
   <div className="review-experience">
     <div className="review-experience__play-experience">
       <label>Play Experience</label>
-      {/* <StarRatingBox /> */}
+      {/* <Ratings /> */}
     </div>
     <div className="review-experience__difficulty">
       <label>Level of Difficulty</label>
-      {/* <StarRatingBox /> */}
+      {/* <Ratings /> */}
     </div>
     <div className="review-experience__value">
       <label>Value for Money</label>
-      {/* <StarRatingBox /> */}
+      {/* <Ratings /> */}
     </div>
     <span className="review-experience__build-time">
       <span>Build Time: 8 hrs</span>
