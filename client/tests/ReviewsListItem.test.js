@@ -12,7 +12,7 @@ describe('Test ReviewsListItem', () => {
   });
 
   it('should have the render rating', () => {
-    expect(wrapper.find('StarRatingBox').exists()).toBe(true);
+    expect(wrapper.find('Ratings').exists()).toBe(true);
   });
 
   it('should have the rendered subject', () => {

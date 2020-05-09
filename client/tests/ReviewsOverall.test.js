@@ -35,19 +35,35 @@ describe('Test ReviewsStatistics', () => {
   });
 
   it('should have aggregated review data for 5 star reviews, 0 reviews', () => {
-    console.log(fixture.aggregatedReview);
     expect(statisticsWrapper.find('.rating-box__count').at(0).prop('children')).toEqual(fixture.aggregatedReview.countFiveReviews);
   });
 
   it('should have aggregated review data for 4 star reviews, 1 reviews', () => {
-    console.log(fixture.aggregatedReview);
     expect(statisticsWrapper.find('.rating-box__count').at(1).prop('children')).toEqual(fixture.aggregatedReview.countFourReviews);
   });
 });
 
 describe('Test OverallExperience', () => {
-  const overallExperienceWrapper = mount(<OverallExperience />);
+  const experiences = fixture.aggregatedReview.experiences;
+  let overallExperienceWrapper;
+  beforeEach(() => {
+    overallExperienceWrapper = mount(<OverallExperience experiences={experiences}/>);
+  });
+
   it('should render', () => {
     expect(overallExperienceWrapper.exists('.overall-experience')).toBe(true);
+  });
+  // Tests these with aggregated data
+  // test that play experience is rendered
+  it('should test that overall experience is rendered', () => {
+    expect(overallExperienceWrapper.find('.rating-container__display').at(0).props().children).toEqual(experiences.playExperience);
+  });
+  // test that level of difficult is rendered
+  it('should test that overall difficulty is rendered', () => {
+    expect(overallExperienceWrapper.find('.rating-container__display').at(1).props().children).toEqual(experiences.difficulty);
+  });
+  // test the value for money is rendered
+  it('should test that overall value is rendered', () => {
+    expect(overallExperienceWrapper.find('.rating-container__display').at(2).props().children).toEqual(experiences.value);
   });
 });

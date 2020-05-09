@@ -1,12 +1,12 @@
 import React from 'react';
 import { shallow } from 'enzyme';
 import fixture from '../../legos/fixtures';
-import StarRatingBox from '../src/shared/StarRatingBox/';
-import Markers from '../src/shared/StarRatingBox/Markers';
+import Ratings from '../src/shared/Ratings/';
+import Markers from '../src/shared/Ratings/Markers';
 
 
 describe('Test Ratings', () => {
-  const ratingsWrapper = shallow(<StarRatingBox />);
+  const ratingsWrapper = shallow(<Ratings />);
   it('should render', () => {
     expect(ratingsWrapper.exists('.rating-container')).toBe(true);
   });
