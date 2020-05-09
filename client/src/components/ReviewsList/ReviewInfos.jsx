@@ -1,7 +1,8 @@
 import React from 'react';
+import styled from 'styled-components';
 
 const ReviewInfos = () => (
-  <div className="review__body-infos col">
+  <ReviewBodyInfos>
     <span className="review-infos__description">
       Lorem Ipsum
     </span>
@@ -11,7 +12,14 @@ const ReviewInfos = () => (
     <div className="review-infos__photos">
       <img src="temp"></img>
     </div>
-  </div>
+  </ReviewBodyInfos>
 );
 
 export default ReviewInfos;
+
+
+const ReviewBodyInfos = styled.div`
+  display: flex;
+  flex-direction: column;
+  margin: 1rem 0;
+`;
