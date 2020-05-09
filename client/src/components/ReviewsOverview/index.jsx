@@ -13,10 +13,14 @@ class ReviewsOverview extends Component {
   }
 
   async componentDidMount() {
-    const res = await Services.getReviews(1);
-    this.setState({
-      reviews: res.reviews
-    });
+    try {
+      const res = await Services.getReviews(1);
+      this.setState({
+        reviews: res.reviews
+      });
+    } catch (err) {
+      console.error('failed to fetch', err);
+    }
   }
 
   render() {
@@ -25,8 +29,17 @@ class ReviewsOverview extends Component {
     return (
       <div className="reviews-overview">
         <h1 className="reviews-overview__title">Customer Reviews</h1>
-        <ReviewsOverall />
-        <ReviewsList reviews={reviews} />
+        {reviews.length ? (
+          <>
+            <ReviewsOverall reviews={reviews}/>
+            <ReviewsList reviews={reviews} />
+          </>
+        ) : (
+          <>
+            <span> Be the first to</span>
+            <button className="btn">Write a review</button>
+          </>
+        )}
       </div>
     );
   }

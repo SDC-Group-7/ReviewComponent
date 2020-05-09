@@ -1,8 +1,8 @@
 import React from 'react';
 import { shallow } from 'enzyme';
 import fixture from '../../legos/fixtures';
-import Ratings from '../src/shared/Rating/';
-import Marker from '../src/shared/Rating/Marker';
+import Ratings from '../src/shared/Ratings/';
+import Markers from '../src/shared/Ratings/Markers';
 
 
 describe('Test Ratings', () => {
@@ -12,12 +12,12 @@ describe('Test Ratings', () => {
   });
 
   it('should render Marker', () => {
-    expect(ratingsWrapper.find(Marker).exists()).toBe(true);
+    expect(ratingsWrapper.find(Markers).exists()).toBe(true);
   });
 });
 
 describe('Test Marker', () => {
-  const markerWrapper = shallow(<Marker />);
+  const markerWrapper = shallow(<Markers />);
   it('should render', () => {
     expect(markerWrapper.contains('Marker')).toBe(true);
   });

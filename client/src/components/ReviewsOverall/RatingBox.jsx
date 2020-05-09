@@ -1,11 +1,13 @@
 import React from 'react';
 
-const RatingBox = () => (
+const RatingBox = ({star = null, count}) => (
   <button className="rating-box">
-    <span>5 stars</span>
+    {
+      star ? (<span>{star} stars</span>) : null
+    }
     {/* TODO <ProgressBar /> */}
     progress bar
-    <span>28</span>
+    <span className="rating-box__count" data-test={count}>{count}</span>
     <span>Reviews</span>
   </button>
 );

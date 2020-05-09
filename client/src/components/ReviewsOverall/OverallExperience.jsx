@@ -1,7 +1,7 @@
 import React from 'react';
-import RatingContainer from './RatingContainer';
+import Ratings from '../../shared/Ratings';
 
-const OverallExperience = () => (
+const OverallExperience = ({experiences}) => (
   <div className="overall-experience">
     <h3 className="overall-experience__title">
       Overall Experience
@@ -9,15 +9,15 @@ const OverallExperience = () => (
     <span className="overall-experience__label">
       Play Experience
     </span>
-    <RatingContainer />
+    <Ratings rating={experiences.playExperience}/>
     <span className="overall-experience__label">
       Level of Difficulty
     </span>
-    <RatingContainer />
+    <Ratings rating={experiences.difficulty}/>
     <span className="overall-experience__label">
       Value for Money
     </span>
-    <RatingContainer />
+    <Ratings rating={experiences.value}/>
   </div>
 );
 
