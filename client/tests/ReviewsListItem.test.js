@@ -40,12 +40,10 @@ describe('Test ReviewsListItem', () => {
 
   describe('Test ReviewHelpfulness', () => {
     let helpfulnessWrapper;
-    const incrementHelpfulCounter = () => {
-      console.log('click');
-    };
+    const mockSubmitVote = jest.fn();
 
     beforeEach(() => {
-      helpfulnessWrapper = mount(<ReviewHelpfulness incrementHelpfulCounter={incrementHelpfulCounter} helpfulCount={1} unhelpfulCount={2}/>);
+      helpfulnessWrapper = mount(<ReviewHelpfulness submitVote={mockSubmitVote} helpfulCount={1} unhelpfulCount={2}/>);
     });
 
     it('Should render', () => {
@@ -60,9 +58,32 @@ describe('Test ReviewsListItem', () => {
       expect(helpfulnessWrapper.find('span').at(2).props().children).toEqual(2);
     });
 
-    it('Should increment count if thumbsup is clicked', () => {
+    it('calls submitVote when clicked on thumbsup', () => {
       helpfulnessWrapper.find('button').at(0).simulate('click');
-      expect(helpfulnessWrapper.find('span').at(1).props().children).toEqual(2);
+      expect(mockSubmitVote.mock.calls.length).toBe(1);
+      expect(mockSubmitVote.mock.calls[0][0]).toBe('is_helpful');
+    });
+
+    it('calls submitVote when clicked on thumbsdown', () => {
+      helpfulnessWrapper.find('button').at(1).simulate('click');
+      expect(mockSubmitVote.mock.calls.length).toBe(1);
+      expect(mockSubmitVote.mock.calls[0][0]).toBe('is_not_helpful');
+    });
+
+    it('should test both buttons are disabled while its loading', () => {
+      let isLoading = true;
+      helpfulnessWrapper.setProps({isLoading});
+      helpfulnessWrapper.update();
+      helpfulnessWrapper.find('button').at(0).simulate('click');
+      helpfulnessWrapper.find('button').at(1).simulate('click');
+      expect(mockSubmitVote.mock.calls.length).toBe(0);
+      expect(mockSubmitVote.mock.calls.length).toBe(0);
+      isLoading = false;
+      helpfulnessWrapper.setProps({isLoading});
+      helpfulnessWrapper.update();
+      helpfulnessWrapper.find('button').at(0).simulate('click');
+      helpfulnessWrapper.find('button').at(1).simulate('click');
+      expect(mockSubmitVote.mock.calls.length).toBe(2);
     });
 
     // TODO: Finish adding tests when the service to fetch reviews is finished
@@ -72,5 +93,3 @@ describe('Test ReviewsListItem', () => {
     // it should remove helpful if helpful is clicked twice
   });
 });
-
-
