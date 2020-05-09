@@ -38,4 +38,68 @@ describe('tests api', () => {
     expect(res.statusCode).toEqual(404);
     done();
   });
+
+  it('should update a review incrementing helpfulness', async () => {
+    // Get initial state of review
+    const initialStateRes = await request.get('/api/products/1/reviews');
+    const review = initialStateRes.body.reviews[0];
+
+    const res = await request.put('/api/products/1/reviews/1')
+      .send({action: '+', feedback: 'is_helpful'})
+      .expect(200);
+
+    // Test that review's is_helpful was incremented
+    const updatedStateRes = await request.get('/api/products/1/reviews');
+    const updatedReview = updatedStateRes.body.reviews[0];
+
+    expect(updatedReview.isHelpful).toEqual(review.isHelpful + 1);
+  });
+
+  it('should update a review incrementing is_not_helpful', async () => {
+    // Get initial state of review
+    const initialStateRes = await request.get('/api/products/1/reviews');
+    const review = initialStateRes.body.reviews[0];
+
+    const res = await request.put('/api/products/1/reviews/1')
+      .send({action: '+', feedback: 'is_not_helpful'})
+      .expect(200);
+
+    // Test that review's is_helpful was incremented
+    const updatedStateRes = await request.get('/api/products/1/reviews');
+    const updatedReview = updatedStateRes.body.reviews[0];
+
+    expect(updatedReview.isNotHelpful).toEqual(review.isNotHelpful + 1);
+  });
+  it('should update a review with decrement is_helpful count', async () => {
+    // Get initial state of review
+    const initialStateRes = await request.get('/api/products/1/reviews');
+    const review = initialStateRes.body.reviews[0];
+
+    const res = await request.put('/api/products/1/reviews/1')
+      .send({action: '-', feedback: 'is_helpful'})
+      .expect(200);
+
+    // Test that review's is_helpful was incremented
+    const updatedStateRes = await request.get('/api/products/1/reviews');
+    const updatedReview = updatedStateRes.body.reviews[0];
+
+    expect(updatedReview.isHelpful).toEqual(review.isHelpful - 1);
+  });
+
+  it('should undo a review with decremnting is_not_helpful count', async () => {
+    // Get initial state of review
+    const initialStateRes = await request.get('/api/products/1/reviews');
+    const review = initialStateRes.body.reviews[0];
+
+    const res = await request.put('/api/products/1/reviews/1')
+      .send({action: '-', feedback: 'is_not_helpful'})
+      .expect(200);
+
+    // Test that review's is_helpful was incremented
+    const updatedStateRes = await request.get('/api/products/1/reviews');
+    const updatedReview = updatedStateRes.body.reviews[0];
+
+    console.log(review.isNotHelpful, updatedReview.isNotHelpful);
+    expect(updatedReview.isNotHelpful).toEqual(review.isNotHelpful - 1);
+  });
 });
