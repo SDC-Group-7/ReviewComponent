@@ -30,7 +30,7 @@ class ReviewsListItem extends Component {
     };
 
     try {
-      await services.sendUpvote(review.id, productId, data);
+      await services.sendVote(review.id, productId, data);
       this.setState((prevState) => ({
         hasVoted: !prevState.hasVoted
       }));

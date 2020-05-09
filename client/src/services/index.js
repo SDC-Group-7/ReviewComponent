@@ -14,7 +14,7 @@ const getReviews = async (productId) => {
   return res.json();
 };
 
-const sendUpvote = async(reviewId, productId, data) => {
+const sendVote = async(reviewId, productId, data) => {
   const apiUrl = `http://localhost:8080/api/products/${productId}/reviews/${reviewId}`;
 
   const res = await fetch(apiUrl, {
@@ -31,4 +31,4 @@ const sendUpvote = async(reviewId, productId, data) => {
 };
 
 
-export default { getReviews, sendUpvote };
+export default { getReviews, sendVote };
