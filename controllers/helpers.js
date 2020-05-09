@@ -29,6 +29,7 @@ const getReviewsData = function (data) {
 
   return {
     productName: data[0].product_name,
+    productId: data[0].product_id,
     count: reviews.length,
     reviews
   };

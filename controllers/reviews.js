@@ -4,7 +4,7 @@ const helpers = require('./helpers');
 const getReviewsForProduct = function (productId) {
   return new Promise((resolve, reject) => {
     const queryString = `
-    SELECT prod.name AS product_name, rev.id, rev.created_at, rev.rating, rev.recommended, rev.subject, rev.is_helpful, rev.is_not_helpful, exp.play_experience, exp.difficulty, exp.value, exp.build_time, users.name, users.age FROM products AS prod
+    SELECT prod.name AS product_name, prod.id AS product_id, rev.id, rev.created_at, rev.rating, rev.recommended, rev.subject, rev.is_helpful, rev.is_not_helpful, exp.play_experience, exp.difficulty, exp.value, exp.build_time, users.name, users.age FROM products AS prod
     JOIN reviews AS rev ON rev.product_id=prod.id
     JOIN experiences AS exp ON exp.id=rev.experience_id
     JOIN users ON users.id=rev.user_id
@@ -21,6 +21,21 @@ const getReviewsForProduct = function (productId) {
   });
 };
 
+const updateReviewForProduct = function (productId, reviewId, data) {
+  return new Promise((resolve, reject) => {
+    const queryString = `UPDATE reviews SET ${data.feedback}=${data.feedback} ${data.action} 1 WHERE id=? AND product_id=?`;
+
+    db.connection.query(queryString, [reviewId, productId], (err, data) => {
+      if (err) {
+        console.error(err);
+        return reject(err);
+      }
+      console.log('Finished query');
+      resolve(data);
+    });
+  });
+};
+
 module.exports = {
-  getReviewsForProduct,
+  getReviewsForProduct, updateReviewForProduct,
 };
