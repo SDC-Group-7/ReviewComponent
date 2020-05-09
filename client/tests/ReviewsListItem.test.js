@@ -1,7 +1,8 @@
 import React from 'react';
-import { shallow } from 'enzyme';
+import { shallow, mount } from 'enzyme';
 import fixture from '../../legos/fixtures';
 import ReviewsListItem from '../src/components/ReviewsList/ReviewsListItem';
+import ReviewHelpfulness from '../src/components/ReviewsList/ReviewHelpfulness';
 
 const review = fixture.reviews[0];
 const wrapper = shallow(<ReviewsListItem review={review}/>);
@@ -35,6 +36,40 @@ describe('Test ReviewsListItem', () => {
 
   it('should shallow render ReviewInfos', () => {
     expect(wrapper.find('ReviewInfos').exists()).toBe(true);
+  });
+
+  describe('Test ReviewHelpfulness', () => {
+    let helpfulnessWrapper;
+    const incrementHelpfulCounter = () => {
+      console.log('click');
+    };
+
+    beforeEach(() => {
+      helpfulnessWrapper = mount(<ReviewHelpfulness incrementHelpfulCounter={incrementHelpfulCounter} helpfulCount={1} unhelpfulCount={2}/>);
+    });
+
+    it('Should render', () => {
+      expect(helpfulnessWrapper.exists()).toBe(true);
+    });
+
+    it('Should render helpful count', () => {
+      expect(helpfulnessWrapper.find('span').at(1).props().children).toEqual(1);
+    });
+
+    it('Should render unhelpful count', () => {
+      expect(helpfulnessWrapper.find('span').at(2).props().children).toEqual(2);
+    });
+
+    it('Should increment count if thumbsup is clicked', () => {
+      helpfulnessWrapper.find('button').at(0).simulate('click');
+      expect(helpfulnessWrapper.find('span').at(1).props().children).toEqual(2);
+    });
+
+    // TODO: Finish adding tests when the service to fetch reviews is finished
+    // it should remove helpful if unhelpful is clicked
+    // it hsould add to unhelpful if unhelpful is clicked
+    // it hsould remove unhelpful if helpful is clicked
+    // it should remove helpful if helpful is clicked twice
   });
 });
 
