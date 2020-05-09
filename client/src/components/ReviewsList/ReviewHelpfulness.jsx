@@ -3,24 +3,29 @@ import styled from 'styled-components';
 
 import thumbsup from '../../assets/svg/thumbsup.svg';
 import thumbsdown from '../../assets/svg/thumbsdown.svg';
+import { HELPFULNESS_FEEDBACK } from '../../constants.js';
 
-const ReviewHelpfulness = () => (
+const ReviewHelpfulness = ({helpfulCount, unhelpfulCount, isLoading, submitVote}) => (
   <div className="review__helpfulness">
-    <TSpacer>
+    <Spacer tm={1.125}>
       <Title>
         Was this helpful?
       </Title>
-    </TSpacer>
-    <HelpfulnessCountContainer >
-      <ThumbButton >
+    </Spacer>
+    <HelpfulnessCountContainer>
+      <ThumbButton disabled={isLoading} onClick={() => {
+        submitVote(HELPFULNESS_FEEDBACK.POSITIVE);
+      }}>
         <img src={thumbsup}></img>
-        <LSpacer></LSpacer>
-        <Text>1</Text>
+        <Spacer lm={0.75}></Spacer>
+        <Text>{helpfulCount}</Text>
       </ThumbButton>
-      <ThumbButton >
+      <ThumbButton disabled={isLoading} onClick={() => {
+        submitVote(HELPFULNESS_FEEDBACK.NEGATIVE);
+      }}>
         <img src={thumbsdown}></img>
-        <LSpacer></LSpacer>
-        <Text>0</Text>
+        <Spacer lm={0.75}></Spacer>
+        <Text>{unhelpfulCount}</Text>
       </ThumbButton>
     </HelpfulnessCountContainer>
   </div>
@@ -58,16 +63,9 @@ const Text = styled.span`
   font-weight: 500;
 `;
 
-const LSpacer = styled.div`
-  padding-top: 0px;
-  padding-right: 0px;
-  padding-bottom: 0px;
-  padding-left: 0.75rem;
-  `;
-
-const TSpacer = styled.div`
-  padding-top: 0.75px;
-  padding-right: 0px;
-  padding-bottom: 0px;
-  padding-left: 0rem;
-`;
+const Spacer = styled.div(props => ({
+  'padding-top': props.tm || '0px',
+  'padding-right': props.rm || '0px',
+  'padding-bottom': props.bm || '0px',
+  'padding-left': `${props.lm}rem` || '0px',
+}));
