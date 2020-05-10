@@ -4,7 +4,7 @@ import styled from 'styled-components';
 import { MARKERS } from '../../constants';
 
 const OverallExperience = ({experiences}) => (
-  <div className="overall-experience">
+  <OverallExperienceContainer>
     <h3 className="overall-experience__title">
       Overall Experience
     </h3>
@@ -28,7 +28,7 @@ const OverallExperience = ({experiences}) => (
         <Ratings rating={experiences.value} marker={MARKERS.LEGO}/>
       </span>
     </div>
-  </div>
+  </OverallExperienceContainer>
 );
 
 export default OverallExperience;
@@ -41,6 +41,7 @@ const Spacer = styled.div(props => ({
 }));
 
 const OverallExperienceContainer = styled.div`
-  display: flex;
   padding: 1.25rem 0px 0.9375rem;
+  margin-left: 1.25rem;
+  boder-left: 1px solid rgb(224, 224, 224);
 `;
