@@ -1,7 +1,7 @@
 import React from 'react';
 import styled from 'styled-components';
 
-const RatingBox = ({star = null, count}) => (
+const RatingBox = ({star, data}) => (
   <RatingBoxBtn>
     {
       star ? (<Text>{star} stars</Text>) : null
@@ -11,13 +11,13 @@ const RatingBox = ({star = null, count}) => (
       <ProgressBarWrapper>
         <TrackWrapper>
           <Track>
-            <Bar></Bar>
+            <Bar percentage={data.percentage}></Bar>
           </Track>
         </TrackWrapper>
       </ProgressBarWrapper>
     </PercentageBar>
     <Text>
-      <span className="rating-box__count" data-test={count}>{count + ' '} </span>
+      <span className="rating-box__count" data-test={data.count}>{data.count + ' '} </span>
       Reviews
     </Text>
   </RatingBoxBtn>
@@ -81,11 +81,11 @@ const Track = styled.div`
   margin: 0.75rem;
 `;
 
-const Bar = styled.div`
-  height: 100%;
-  width: 80%;
-  background-color: rgb(255, 207, 0);
-`;
+const Bar = styled.div(props => ({
+  'width': `${props.percentage}%`,
+  'height': '100%',
+  'background-color': 'rgb(255, 207, 0)',
+}));
 
 const PercentageBar = styled.div`
   width: 12rem;
