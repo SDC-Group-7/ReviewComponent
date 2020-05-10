@@ -27,11 +27,11 @@ const ReviewsStatistics = (props) => {
           <h3 className="reviews-statistics__title">
             Rating
           </h3>
-          <RatingBox star={5} count={data.aggregatedReviewsCount[5]}/>
-          <RatingBox star={4} count={data.aggregatedReviewsCount[4]}/>
-          <RatingBox star={3} count={data.aggregatedReviewsCount[3]}/>
-          <RatingBox star={2} count={data.aggregatedReviewsCount[2]}/>
-          <RatingBox star={1} count={data.aggregatedReviewsCount[1]}/>
+          {
+            Object.values(data.aggregatedReviewsCount).reverse().map((count, idx) => (
+              <RatingBox star={5 - idx} key={idx} count={count}/>
+            ))
+          }
         </div>
         <OverallExperience experiences={data.aggregatedExperiences}/>
       </div>
