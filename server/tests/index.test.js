@@ -99,7 +99,15 @@ describe('tests api', () => {
     const updatedStateRes = await request.get('/api/products/1/reviews');
     const updatedReview = updatedStateRes.body.reviews[0];
 
-    console.log(review.isNotHelpful, updatedReview.isNotHelpful);
     expect(updatedReview.isNotHelpful).toEqual(review.isNotHelpful - 1);
+  });
+
+  it('should fetch a review', async () => {
+    const res = await request.get('/api/products/1/reviews/1')
+      .expect(response => {
+        const body = response.body;
+        expect(response.statusCode).toEqual(200);
+        expect(body.id).toEqual(1);
+      });
   });
 });

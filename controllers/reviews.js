@@ -30,12 +30,26 @@ const updateReviewForProduct = function (productId, reviewId, data) {
         console.error(err);
         return reject(err);
       }
-      console.log('Finished query');
+
       resolve(data);
     });
   });
 };
 
+const getReview = function (productId, reviewId) {
+  return new Promise((resolve, reject) => {
+    const queryString = 'SELECT * FROM reviews WHERE id=? AND product_id=?';
+    db.connection.query(queryString, [reviewId, productId], (err, data) => {
+      if (err) {
+        console.error(err);
+        return reject(err);
+      }
+
+      resolve(data[0]);
+    });
+  });
+};
+
 module.exports = {
-  getReviewsForProduct, updateReviewForProduct,
+  getReviewsForProduct, updateReviewForProduct, getReview
 };
