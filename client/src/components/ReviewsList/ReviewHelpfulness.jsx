@@ -7,7 +7,14 @@ import thumbsdown from '../../assets/svg/thumbsdown/thumbsdown.svg';
 import activeThumbsdown from '../../assets/svg/thumbsdown/activeThumbsdown.svg';
 import { HELPFULNESS_FEEDBACK } from '../../constants.js';
 
-const ReviewHelpfulness = ({helpfulCount, unhelpfulCount, isLoading, submitVote, helpfulIsActive, unhelpfulIsActive}) => (
+const ReviewHelpfulness = ({
+  helpfulCount,
+  unhelpfulCount,
+  isLoading,
+  submitVote,
+  helpfulIsActive,
+  unhelpfulIsActive
+}) => (
   <div className="review__helpfulness">
     <Spacer tm={1.125}>
       <Title>
