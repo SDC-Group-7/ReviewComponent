@@ -2,10 +2,12 @@ import React from 'react';
 import styled from 'styled-components';
 
 import thumbsup from '../../assets/svg/thumbsup.svg';
+import activeThumbsup from '../../assets/svg/activeThumbsup.svg';
 import thumbsdown from '../../assets/svg/thumbsdown.svg';
+import activeThumbsdown from '../../assets/svg/activeThumbsdown.svg';
 import { HELPFULNESS_FEEDBACK } from '../../constants.js';
 
-const ReviewHelpfulness = ({helpfulCount, unhelpfulCount, isLoading, submitVote}) => (
+const ReviewHelpfulness = ({helpfulCount, unhelpfulCount, isLoading, submitVote, helpfulIsActive, unhelpfulIsActive}) => (
   <div className="review__helpfulness">
     <Spacer tm={1.125}>
       <Title>
@@ -13,17 +15,17 @@ const ReviewHelpfulness = ({helpfulCount, unhelpfulCount, isLoading, submitVote}
       </Title>
     </Spacer>
     <HelpfulnessCountContainer>
-      <ThumbButton disabled={isLoading} onClick={() => {
+      <ThumbButton disabled={isLoading || unhelpfulIsActive} onClick={() => {
         submitVote(HELPFULNESS_FEEDBACK.POSITIVE);
       }}>
-        <img src={thumbsup}></img>
+        <img src={helpfulIsActive ? activeThumbsup : thumbsup}></img>
         <Spacer lm={0.75}></Spacer>
         <Text>{helpfulCount}</Text>
       </ThumbButton>
-      <ThumbButton disabled={isLoading} onClick={() => {
+      <ThumbButton disabled={isLoading || helpfulIsActive} onClick={() => {
         submitVote(HELPFULNESS_FEEDBACK.NEGATIVE);
       }}>
-        <img src={thumbsdown}></img>
+        <img src={unhelpfulIsActive ? activeThumbsdown : thumbsdown}></img>
         <Spacer lm={0.75}></Spacer>
         <Text>{unhelpfulCount}</Text>
       </ThumbButton>

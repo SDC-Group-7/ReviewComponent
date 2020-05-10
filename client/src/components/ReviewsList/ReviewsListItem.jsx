@@ -14,6 +14,8 @@ class ReviewsListItem extends Component {
     this.state = {
       helpfulCount: props.review.isHelpful,
       unhelpfulCount: props.review.isNotHelpful,
+      helpfulIsActive: false,
+      unhelpfulIsActive: false,
       hasVoted: false,
       isLoading: false,
     };
@@ -33,10 +35,13 @@ class ReviewsListItem extends Component {
       await services.sendVote(review.id, productId, data);
       const res = await services.getReview(review.id, productId);
 
+      const activeButton = feedback === 'is_helpful' ? 'helpfulIsActive' : 'unhelpfulIsActive';
+
       this.setState((prevState) => ({
         hasVoted: !prevState.hasVoted,
         helpfulCount: res.is_helpful,
-        unhelpfulCount: res.is_not_helpful
+        unhelpfulCount: res.is_not_helpful,
+        [activeButton]: !prevState[activeButton]
       }));
     } catch (err) {
       console.error('Could not update review: ', err);
@@ -49,7 +54,7 @@ class ReviewsListItem extends Component {
 
   render() {
     const { review } = this.props;
-    const { helpfulCount, unhelpfulCount, isLoading } = this.state;
+    const { helpfulCount, unhelpfulCount, isLoading, helpfulIsActive, unhelpfulIsActive} = this.state;
 
     return (
       <ReviewsContainer>
@@ -76,7 +81,7 @@ class ReviewsListItem extends Component {
           <ReviewInfos />
           <ReviewExperience />
         </ReviewBodyContainer>
-        <ReviewHelpfulness submitVote={this.submitVote.bind(this)} helpfulCount={helpfulCount} unhelpfulCount={unhelpfulCount} isLoading={isLoading}/>
+        <ReviewHelpfulness submitVote={this.submitVote.bind(this)} helpfulCount={helpfulCount} unhelpfulCount={unhelpfulCount} isLoading={isLoading} helpfulIsActive={helpfulIsActive} unhelpfulIsActive={unhelpfulIsActive}/>
       </ReviewsContainer>
     );
   }
