@@ -1,8 +1,11 @@
 import React from 'react';
 import RatingBox from './RatingBox';
+import styled from 'styled-components';
+
 import OverallExperience from './OverallExperience';
 import Ratings from '../../shared/Ratings';
 import helpers from '../../helpers';
+import { MARKERS } from '../../constants';
 
 const ReviewsStatistics = (props) => {
   const {
@@ -10,11 +13,11 @@ const ReviewsStatistics = (props) => {
   } = props;
   const { overallRating, overallReviewsCount, overallRecommendation, aggregatedReviewsCount, aggregatedExperiences } = helpers.aggregateData(reviews);
   return (
-    <div className="reviews-statistics">
+    <OverallStatistics>
       <span className="reviews-statistics__title">
         Overall Rating:
       </span>
-      <Ratings rating={overallRating} />
+      <Ratings rating={overallRating} markers={MARKERS.LEGOS}/>
       <span className="reviews-statistics__recommendation">
         {overallRecommendation}
         % would recommend this product.
@@ -32,8 +35,15 @@ const ReviewsStatistics = (props) => {
         </div>
         <OverallExperience experiences={aggregatedExperiences}/>
       </div>
-    </div>
+    </OverallStatistics>
   );
 };
 
 export default ReviewsStatistics;
+
+
+const OverallStatistics = styled.div`
+  display: flex;
+  flex-flow: column nowrap;
+  padding: 1.25rem 0px 1rem;
+`;

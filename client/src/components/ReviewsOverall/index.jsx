@@ -1,4 +1,5 @@
 import React from 'react';
+import styled from 'styled-components';
 
 import ReviewsStatistics from './ReviewsStatistics';
 
@@ -7,9 +8,11 @@ const ReviewsOverall = ({reviews}) => {
     <div className="reviews-overall">
       <ReviewsStatistics reviews={reviews}/>
       <div className="reviews-overall__write-review">
-        <button className="btn">
-          Write a Review
-        </button>
+        <WriteReviewContainer >
+          <button className="btn">
+            Write a Review
+          </button>
+        </WriteReviewContainer>
       </div>
       <div className="reviews-overall__disclaimer">
         <span>
@@ -21,3 +24,8 @@ const ReviewsOverall = ({reviews}) => {
 };
 
 export default ReviewsOverall;
+
+
+const WriteReviewContainer = styled.div`
+  padding: 1rem 1rem 1.25rem;
+`;

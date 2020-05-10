@@ -5,7 +5,7 @@ import ReviewInfos from './ReviewInfos';
 import ReviewExperience from './ReviewExperience';
 import ReviewHelpfulness from './ReviewHelpfulness';
 import Ratings from '../../shared/Ratings';
-import {HELPFULNESS_ACTION } from '../../constants.js';
+import {HELPFULNESS_ACTION, MARKERS } from '../../constants.js';
 
 class ReviewsListItem extends Component {
   constructor(props) {
@@ -62,7 +62,7 @@ class ReviewsListItem extends Component {
           {review.createdAt}
         </span>
         <span className="review__rating-bar">
-          <Ratings rating={review.rating} />
+          <Ratings rating={review.rating.toFixed(1)} marker={MARKERS.STAR}/>
         </span>
         <span className="review__subject">
           {review.subject}
