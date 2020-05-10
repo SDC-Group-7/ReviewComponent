@@ -2,7 +2,7 @@ import React from 'react';
 import styled from 'styled-components';
 import ReviewsListItem from './ReviewsListItem';
 
-const ReviewsList = ({reviews}) => {
+const ReviewsList = ({reviews, productId}) => {
   return (
     <>
       <Title>Reviews</Title>
@@ -10,7 +10,7 @@ const ReviewsList = ({reviews}) => {
       <ReviewsListContainer>
         {
           reviews.map(review => (
-            <ReviewsListItem key={review.id} review={review} />
+            <ReviewsListItem key={review.id} review={review} productId={productId} />
           ))
         }
       </ReviewsListContainer>

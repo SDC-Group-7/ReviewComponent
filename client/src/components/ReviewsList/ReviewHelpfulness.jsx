@@ -1,12 +1,32 @@
 import React from 'react';
 import styled from 'styled-components';
 
-const ReviewHelpfulness = () => (
+import thumbsup from '../../assets/svg/thumbsup.svg';
+import thumbsdown from '../../assets/svg/thumbsdown.svg';
+import { HELPFULNESS_FEEDBACK } from '../../constants.js';
+
+const ReviewHelpfulness = ({helpfulCount, unhelpfulCount, isLoading, submitVote}) => (
   <div className="review__helpfulness">
-    <h5 className="title">Was this helpful?</h5>
-    <HelpfulnessCountContainer >
-      <ThumbButton >helpful 10</ThumbButton>
-      <ThumbButton >not helpful 1</ThumbButton>
+    <Spacer tm={1.125}>
+      <Title>
+        Was this helpful?
+      </Title>
+    </Spacer>
+    <HelpfulnessCountContainer>
+      <ThumbButton disabled={isLoading} onClick={() => {
+        submitVote(HELPFULNESS_FEEDBACK.POSITIVE);
+      }}>
+        <img src={thumbsup}></img>
+        <Spacer lm={0.75}></Spacer>
+        <Text>{helpfulCount}</Text>
+      </ThumbButton>
+      <ThumbButton disabled={isLoading} onClick={() => {
+        submitVote(HELPFULNESS_FEEDBACK.NEGATIVE);
+      }}>
+        <img src={thumbsdown}></img>
+        <Spacer lm={0.75}></Spacer>
+        <Text>{unhelpfulCount}</Text>
+      </ThumbButton>
     </HelpfulnessCountContainer>
   </div>
 );
@@ -16,8 +36,36 @@ export default ReviewHelpfulness;
 
 const HelpfulnessCountContainer = styled.div`
   display: flex;
+  padding-bottom: 1.125rem;
+  align-items: center;
 `;
 
 const ThumbButton = styled.button`
   margin: 1rem;
+  display: flex;
+  align-items: center;
+  background: transparent;
+  border-width: 0px;
+  cursor: pointer;
 `;
+
+const Title = styled.span`
+  font-size: 1rem;
+  line-height: 1.5;
+  font-weight: 400;
+`;
+
+
+const Text = styled.span`
+  color: rgb(44, 44, 44);
+  font-size: 0.75rem;
+  line-height: 1.1875rem;
+  font-weight: 500;
+`;
+
+const Spacer = styled.div(props => ({
+  'padding-top': props.tm || '0px',
+  'padding-right': props.rm || '0px',
+  'padding-bottom': props.bm || '0px',
+  'padding-left': `${props.lm}rem` || '0px',
+}));
