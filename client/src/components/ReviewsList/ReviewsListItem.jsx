@@ -31,8 +31,12 @@ class ReviewsListItem extends Component {
 
     try {
       await services.sendVote(review.id, productId, data);
+      const res = await services.getReview(review.id, productId);
+      console.log(res);
       this.setState((prevState) => ({
-        hasVoted: !prevState.hasVoted
+        hasVoted: !prevState.hasVoted,
+        helpfulCount: res.is_helpful,
+        unhelpfulCount: res.is_not_helpful
       }));
     } catch (err) {
       console.error('Could not update review: ', err);
