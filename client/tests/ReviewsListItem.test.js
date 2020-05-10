@@ -43,7 +43,8 @@ describe('Test ReviewsListItem', () => {
     const mockSubmitVote = jest.fn();
 
     beforeEach(() => {
-      helpfulnessWrapper = mount(<ReviewHelpfulness submitVote={mockSubmitVote} helpfulCount={1} unhelpfulCount={2}/>);
+      helpfulnessWrapper = mount(<ReviewHelpfulness submitVote={mockSubmitVote} helpfulCount={1} unhelpfulCount={2} helpfulIsActive={false} unhelpfulIsActive={false}/>);
+
     });
 
     it('Should render', () => {
@@ -87,9 +88,19 @@ describe('Test ReviewsListItem', () => {
     });
 
     // TODO: Finish adding tests when the service to fetch reviews is finished
-    // it should remove helpful if unhelpful is clicked
-    // it hsould add to unhelpful if unhelpful is clicked
-    // it hsould remove unhelpful if helpful is clicked
     // it should remove helpful if helpful is clicked twice
+    it('helpful button should toggle and unhelpful should be disabled', () => {
+      expect(helpfulnessWrapper.find('button').at(0).prop('data-is-active')).toBe(false);
+      helpfulnessWrapper.setProps({helpfulIsActive: true});
+      expect(helpfulnessWrapper.find('button').at(0).prop('data-is-active')).toBe(true);
+
+      // Should not be able to click on unhelpful
+      helpfulnessWrapper.find('button').at(1).simulate('click');
+      expect(mockSubmitVote.mock.calls.length).toBe(0);
+
+      // Emulate toggling helpful button
+      helpfulnessWrapper.setProps({helpfulIsActive: false});
+      expect(helpfulnessWrapper.find('button').at(0).prop('data-is-active')).toBe(false);
+    });
   });
 });

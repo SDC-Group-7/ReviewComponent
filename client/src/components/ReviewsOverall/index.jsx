@@ -17,6 +17,7 @@ const ReviewsOverall = ({reviews}) => {
         </span>
       </div>
     </div>
-)};
+  );
+};
 
 export default ReviewsOverall;
