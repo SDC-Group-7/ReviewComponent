@@ -2,21 +2,19 @@ import React from 'react';
 import styled from 'styled-components';
 import ReviewsListItem from './ReviewsListItem';
 
-const ReviewsList = ({reviews, productId}) => {
-  return (
-    <>
-      <Title>Reviews</Title>
-      <SortBy>Most Relavent</SortBy>
-      <ReviewsListContainer>
-        {
-          reviews.map(review => (
-            <ReviewsListItem key={review.id} review={review} productId={productId} />
-          ))
-        }
-      </ReviewsListContainer>
-    </>
-  );
-};
+const ReviewsList = ({reviews, productId}) => (
+  <>
+    <Title>Reviews</Title>
+    <SortBy>Most Relavent</SortBy>
+    <ReviewsListContainer>
+      {
+        reviews.map(review => (
+          <ReviewsListItem key={review.id} review={review} productId={productId} />
+        ))
+      }
+    </ReviewsListContainer>
+  </>
+);
 
 export default ReviewsList;
 

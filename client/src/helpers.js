@@ -8,11 +8,24 @@ const getSumExperience = (data) => {
   }, {playExperience: 0, difficulty: 0, value: 0});
 };
 
-const aggregateExperiences = (sums) => {
-  Object.keys(sums).forEach((key, _, arr) => {
-    sums[key] = Math.round((sums[key] / arr.length) * 10) / 10;
+const aggregateExperiences = (data) => {
+  const sums = getSumExperience(data);
+
+  Object.keys(sums).forEach((key) => {
+    sums[key] = (Math.round((sums[key] / data.length) * 10) / 10).toFixed(1);
   });
   return sums;
+};
+
+const getOverallRating = (data) => {
+  const totalRatings = data.reduce((total, review) => {
+    return total + review.rating;
+  }, 0);
+  return (Math.round((totalRatings / data.length) * 10) / 10);
+};
+
+const getOverallRecommendation = (data) => {
+
 };
 
 const aggregateData = function (data) {
@@ -21,28 +34,23 @@ const aggregateData = function (data) {
     return result;
   }, {1: 0, 2: 0, 3: 0, 4: 0, 5: 0});
 
-  // Get aggregated review experiences -> 5.0
-  const sumExperiences = getSumExperience(data);
-  const aggregatedExperiences = aggregateExperiences(sumExperiences);
+  const aggregatedExperiences = aggregateExperiences(data);
 
-  // Get overall rating -> 4.3
-  const totalRatings = data.reduce((total, review) => {
-    return total + review.rating;
-  }, 0);
-  const overallRating = Math.round((totalRatings / data.length) * 10) / 10;
+  const overallRating = getOverallRating(data);
 
-  // Get recommendation percentage of a review -> 91.5
   const recommendationResult = data.reduce((total, review) => {
     return review.recommended ? total + 1 : total;
   }, 0) / data.length * 100;
   const overallRecommendation = Math.round(recommendationResult * 10) / 10;
 
   return {
-    overallRating: overallRating || 1,
-    overallReviewCount: data.length,
-    overallRecommendation,
-    aggregatedReviewsCount,
-    aggregatedExperiences
+    'data': {
+      overallRating: overallRating || 1,
+      overallReviewCount: data.length,
+      overallRecommendation,
+      aggregatedReviewsCount,
+      aggregatedExperiences
+    }
   };
 };
 export default {aggregateData};
