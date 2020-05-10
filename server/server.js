@@ -43,7 +43,7 @@ app.put('/api/products/:product_id/reviews/:review_id', (req, res) => {
 
 app.get('/api/products/:product_id/reviews/:review_id', (req, res) => {
   const { product_id: productId, review_id: reviewId } = req.params;
-  console.log('getting review');
+
   Reviews.getReview(productId, reviewId)
     .then((review) => {
       res.json(review);
