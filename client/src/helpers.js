@@ -8,9 +8,9 @@ const getSumExperience = (data) => {
   }, {playExperience: 0, difficulty: 0, value: 0});
 };
 
-const aggregateExperiences = (sums) => {
-  Object.keys(sums).forEach((key, _, arr) => {
-    sums[key] = Math.round((sums[key] / arr.length) * 10) / 10;
+const aggregateExperiences = (sums, length) => {
+  Object.keys(sums).forEach((key) => {
+    sums[key] = (Math.round((sums[key] / length) * 10) / 10).toFixed(1);
   });
   return sums;
 };
@@ -23,13 +23,13 @@ const aggregateData = function (data) {
 
   // Get aggregated review experiences -> 5.0
   const sumExperiences = getSumExperience(data);
-  const aggregatedExperiences = aggregateExperiences(sumExperiences);
+  const aggregatedExperiences = aggregateExperiences(sumExperiences, data.length);
 
   // Get overall rating -> 4.3
   const totalRatings = data.reduce((total, review) => {
     return total + review.rating;
   }, 0);
-  const overallRating = Math.round((totalRatings / data.length) * 10) / 10;
+  const overallRating = (Math.round((totalRatings / data.length) * 10) / 10);
 
   // Get recommendation percentage of a review -> 91.5
   const recommendationResult = data.reduce((total, review) => {

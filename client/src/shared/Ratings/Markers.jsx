@@ -1,31 +1,45 @@
 import React from 'react';
 import styled from 'styled-components';
 
-import fullStars from '../../assets/svg/fullStars.svg';
-import thumbsup from '../../assets/svg/thumbsup.svg';
-const Markers = () => (
-  <MarkerLayout>
-    <StarContainer>
-      <img src={fullStars} />
-    </StarContainer>
-    <StarContainer>
-      <img src={fullStars} />
-    </StarContainer>
-    <StarContainer>
-      <img src={fullStars} />
-    </StarContainer>
-    <StarContainer>
-      <img src={fullStars} />
-    </StarContainer>
-    <StarContainer>
-      <img src={fullStars} />
-    </StarContainer>
-  </MarkerLayout>
-);
+import fullStarMarker from '../../assets/svg/starMarker/fullStarMarker.svg';
+import halfStarMarker from '../../assets/svg/starMarker/halfStarMarker.svg';
+import starMarker from '../../assets/svg/starMarker/starMarker.svg';
+import legoMarker from '../../assets/svg/legoMarker/legoMarker.svg';
+import filledLegoMarker from '../../assets/svg/legoMarker/filledLegoMarker.svg';
+
+const Markers = ({rating, marker = 'star'}) => {
+  const markerUrl = marker === 'star' ? fullStarMarker : filledLegoMarker;
+  const halfMarkerUrl = marker === 'star' ? halfStarMarker : legoMarker;
+  const emptyMarkerUrl = marker === 'star' ? starMarker : legoMarker;
+
+  return (
+    <MarkerLayout>
+      {
+        [...Array(5).keys()].map((idx) => {
+          let isFilled = idx <= rating - 1;
+          let finalMarker;
+
+          // TODO: Workaround for integer numbers instead of float is to add a .1 to the rating
+          // This checks for the final marker and sets the SVG
+          if (idx === Math.ceil(Number(rating) + .1) - 1) {
+            const mod = rating * 10 % 10;
+            finalMarker = mod < 3 ? emptyMarkerUrl : mod > 7 ? markerUrl : halfMarkerUrl;
+          }
+          return (
+            <MarkerContainer key={idx}>
+              <img src={finalMarker ? finalMarker : isFilled ? markerUrl : emptyMarkerUrl} />
+            </MarkerContainer>
+          );
+        })
+
+      }
+    </MarkerLayout>
+  );
+};
 
 export default Markers;
 
-const StarContainer = styled.div`
+const MarkerContainer = styled.div`
   width: 1.5625rem;
   height: 1.5625rem;
   margin-right: 0.38rem;

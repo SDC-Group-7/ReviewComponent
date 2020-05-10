@@ -3,9 +3,9 @@ import styled from 'styled-components';
 
 import Markers from './Markers';
 
-const Ratings = ({rating}) => (
+const Ratings = ({rating, marker}) => (
   <RatingLayout>
-    <Markers />
+    <Markers rating={rating} marker={marker}/>
     <RatingDisplay>
       {rating}
     </RatingDisplay>
