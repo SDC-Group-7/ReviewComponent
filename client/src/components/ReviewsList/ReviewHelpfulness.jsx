@@ -15,14 +15,14 @@ const ReviewHelpfulness = ({helpfulCount, unhelpfulCount, isLoading, submitVote,
       </Title>
     </Spacer>
     <HelpfulnessCountContainer>
-      <ThumbButton disabled={isLoading || unhelpfulIsActive} onClick={() => {
+      <ThumbButton disabled={isLoading || unhelpfulIsActive} data-is-active={helpfulIsActive} onClick={() => {
         submitVote(HELPFULNESS_FEEDBACK.POSITIVE);
       }}>
         <img src={helpfulIsActive ? activeThumbsup : thumbsup}></img>
         <Spacer lm={0.75}></Spacer>
         <Text>{helpfulCount}</Text>
       </ThumbButton>
-      <ThumbButton disabled={isLoading || helpfulIsActive} onClick={() => {
+      <ThumbButton disabled={isLoading || helpfulIsActive} data-is-active={unhelpfulIsActive} onClick={() => {
         submitVote(HELPFULNESS_FEEDBACK.NEGATIVE);
       }}>
         <img src={unhelpfulIsActive ? activeThumbsdown : thumbsdown}></img>
