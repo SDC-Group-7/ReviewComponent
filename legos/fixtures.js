@@ -46,7 +46,7 @@ const aggregatedReview = {
   countTwoReviews: 0,
   countOneReviews: 1,
   avgRating: 3,
-  avgRecommendation: '33.3',
+  avgRecommendation: 33.3,
   totalReviews: 3,
   experiences: {
     playExperience: '4.4',

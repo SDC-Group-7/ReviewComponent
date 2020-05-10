@@ -1,24 +1,26 @@
 import React from 'react';
-import { shallow } from 'enzyme';
+import { mount, shallow } from 'enzyme';
 import fixture from '../../legos/fixtures';
 import Ratings from '../src/shared/Ratings/';
 import Markers from '../src/shared/Ratings/Markers';
 
 
 describe('Test Ratings', () => {
-  const ratingsWrapper = shallow(<Ratings />);
-  it('should render', () => {
-    expect(ratingsWrapper.exists('.rating-container')).toBe(true);
-  });
+  const rating = 5;
+  const ratingsWrapper = shallow(<Ratings rating={rating}/>);
 
-  it('should render Marker', () => {
-    expect(ratingsWrapper.find(Markers).exists()).toBe(true);
+  it('should contain the rating', () => {
+    expect(ratingsWrapper.contains(rating)).toBe(true);
   });
 });
 
 describe('Test Marker', () => {
-  const markerWrapper = shallow(<Markers />);
+  const markerWrapper = mount(<Markers />);
   it('should render', () => {
-    expect(markerWrapper.contains('Marker')).toBe(true);
+    expect(markerWrapper.find('Markers').exists()).toBe(true);
+  });
+
+  it('should 5 images should be rendered', () => {
+    expect(markerWrapper.find('img').length).toEqual(5);
   });
 });
