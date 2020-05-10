@@ -2,7 +2,7 @@ import React from 'react';
 import styled from 'styled-components';
 
 const RatingBox = ({star, data}) => (
-  <RatingBoxBtn>
+  <RatingBoxBtn disabled={data.count === 0}>
     {
       star ? (<Text>{star} stars</Text>) : null
     }
@@ -26,6 +26,19 @@ const RatingBox = ({star, data}) => (
 export default RatingBox;
 
 
+const NullifiedContainer = styled.div`
+  margin-bottom: 0.9375rem;
+  margin-left: -0.9375rem;
+  display: flex;
+  flex-direction: row;
+  -webkit-box-align: center;
+  align-items: center;
+  opacity: 0.5;
+  font-style: italic;
+  cursor: no-drop;
+  padding: 0px 2.5rem 0px 0.9375rem;
+`;
+
 const RatingBoxBtn = styled.button`
   box-shadow: none;
   cursor: pointer;
@@ -39,6 +52,21 @@ const RatingBoxBtn = styled.button`
   -webkit-box-align: center;
   align-items: center;
   padding: 0px 2.5rem 0px 0.9375rem;
+
+  ${({disabled}) =>
+    disabled && `
+      margin-bottom: 0.9375rem;
+      margin-left: -0.9375rem;
+      display: flex;
+      flex-direction: row;
+      -webkit-box-align: center;
+      align-items: center;
+      opacity: 0.5;
+      font-style: italic;
+      cursor: no-drop;
+      padding: 0px 2.5rem 0px 0.9375rem;
+    `}
+  }
 `;
 
 const Text = styled.span`
