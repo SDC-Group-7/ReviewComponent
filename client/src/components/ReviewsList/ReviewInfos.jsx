@@ -1,11 +1,11 @@
-import React, {Component} from 'react';
+import React, { Component } from 'react';
 import ReactDOM from 'react-dom';
-import styled, {css} from 'styled-components';
+import styled, { css } from 'styled-components';
 
 import { Spacer } from '../../shared/StyledComponents';
 
 
-class ReviewInfos extends React.Component {
+class ReviewInfos extends Component {
   constructor(props) {
     super(props);
 
