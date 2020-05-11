@@ -79,7 +79,7 @@ class ReviewsListItem extends Component {
         }
         <ReviewBodyContainer>
           <ReviewInfos />
-          <ReviewExperience />
+          <ReviewExperience experiences={review.experience}/>
         </ReviewBodyContainer>
         <ReviewHelpfulness submitVote={this.submitVote.bind(this)} helpfulCount={helpfulCount} unhelpfulCount={unhelpfulCount} isLoading={isLoading} helpfulIsActive={helpfulIsActive} unhelpfulIsActive={unhelpfulIsActive}/>
       </ReviewsContainer>

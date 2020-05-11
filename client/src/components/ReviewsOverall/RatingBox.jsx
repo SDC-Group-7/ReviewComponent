@@ -6,7 +6,6 @@ const RatingBox = ({star, data}) => (
     {
       star ? (<Text>{star} stars</Text>) : null
     }
-    {/* TODO <ProgressBar /> */}
     <PercentageBar>
       <ProgressBarWrapper>
         <TrackWrapper>

@@ -2,15 +2,16 @@ import React from 'react';
 import styled from 'styled-components';
 
 import ReviewsStatistics from './ReviewsStatistics';
+import { Button } from '../../shared/StyledComponents';
 
 const ReviewsOverall = ({reviews}) => {
   return (
     <ReviewsOverallContainer>
       <ReviewsStatistics reviews={reviews}/>
       <WriteReviewContainer >
-        <button className="btn">
+        <Button>
           Write a Review
-        </button>
+        </Button>
       </WriteReviewContainer>
       <OverallDisclaimerWrapper>
         <span>

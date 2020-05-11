@@ -2,6 +2,7 @@ import React from 'react';
 import Ratings from '../../shared/Ratings';
 import styled from 'styled-components';
 import { MARKERS } from '../../constants';
+import { Spacer } from '../../shared/StyledComponents';
 
 const OverallExperience = ({experiences}) => (
   <OverallExperienceContainer>
@@ -33,12 +34,6 @@ const OverallExperience = ({experiences}) => (
 
 export default OverallExperience;
 
-const Spacer = styled.div(props => ({
-  'padding-top': `${props.tm}rem` || '0px',
-  'padding-right': `${props.rm}rem` || '0px',
-  'padding-bottom': `${props.bm}rem` || '0px',
-  'padding-left': `${props.lm}rem` || '0px',
-}));
 
 const OverallExperienceContainer = styled.div`
   padding: 1.25rem 0px 1rem 1.25rem;
