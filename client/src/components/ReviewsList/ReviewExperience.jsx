@@ -10,19 +10,19 @@ const ReviewExperience = ({experiences}) => (
     <Spacer bm={1.125}>
       <div className="review-experience__play-experience">
         <label>Play Experience</label>
-        <Ratings rating={experiences.playExperience} marker={MARKERS.LEGO}/>
+        <Ratings rating={experiences.playExperience.toFixed(1)} marker={MARKERS.LEGO}/>
       </div>
     </Spacer>
     <Spacer bm={1.125}>
       <div className="review-experience__difficulty">
         <label>Level of Difficulty</label>
-        <Ratings rating={experiences.difficulty} marker={MARKERS.LEGO}/>
+        <Ratings rating={experiences.difficulty.toFixed(1)} marker={MARKERS.LEGO}/>
       </div>
     </Spacer>
     <Spacer bm={1.125}>
       <div className="review-experience__value">
         <label>Value for Money</label>
-        <Ratings rating={experiences.value} marker={MARKERS.LEGO}/>
+        <Ratings rating={experiences.value.toFixed(1)} marker={MARKERS.LEGO}/>
       </div>
     </Spacer>
     <Spacer bm={1.125}>
