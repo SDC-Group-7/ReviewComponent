@@ -12,6 +12,7 @@ const getReviewsData = function (data) {
       rating: data.rating,
       recommended: data.recommended,
       subject: data.subject,
+      description: data.description,
       isHelpful: data.is_helpful,
       isNotHelpful: data.is_not_helpful,
       experience: {

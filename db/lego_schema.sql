@@ -32,6 +32,7 @@ CREATE TABLE reviews (
 	created_at Date NOT NULL,
 	recommended BIT DEFAULT 0,
 	subject VARCHAR(50) NOT NULL,
+	description VARCHAR(1550) DEFAULT '',
 	is_helpful INT DEFAULT 0,
 	is_not_helpful INT DEFAULT 0,
 	product_id INT NOT NULL,

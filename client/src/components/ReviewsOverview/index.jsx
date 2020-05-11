@@ -62,7 +62,7 @@ const OverviewContainer = styled.div`
   line-height: 1.5;
   text-size-adjust: 100%;
   color: rgb(44, 44, 44);
-  background: rgb(255, 255, 255)
+  background: rgb(255, 255, 255);
   font-family: "Cera Pro", sans-serif;
 `;
 
