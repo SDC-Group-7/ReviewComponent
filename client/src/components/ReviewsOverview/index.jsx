@@ -1,4 +1,6 @@
 import React, { Component } from 'react';
+import styled from 'styled-components';
+
 import Services from '../../services';
 import ReviewsList from '../ReviewsList';
 import ReviewsOverall from '../ReviewsOverall';
@@ -28,7 +30,7 @@ class ReviewsOverview extends Component {
   render() {
     const { reviews, productId } = this.state;
     return (
-      <div className="reviews-overview">
+      <OverviewContainer>
         <h1 className="reviews-overview__title">Customer Reviews</h1>
         {reviews.length ? (
           <>
@@ -41,9 +43,17 @@ class ReviewsOverview extends Component {
             <button className="btn">Write a review</button>
           </>
         )}
-      </div>
+      </OverviewContainer>
     );
   }
 }
 
 export default ReviewsOverview;
+
+
+const OverviewContainer = styled.div`
+  width: 100%;
+  max-width: 82.5rem;
+  padding: 0px 0.75rem;
+  margin: 0px auto;
+`;
