@@ -41,7 +41,6 @@ const Spacer = styled.div(props => ({
 }));
 
 const OverallExperienceContainer = styled.div`
-  padding: 1.25rem 0px 0.9375rem;
-  margin-left: 1.25rem;
-  boder-left: 1px solid rgb(224, 224, 224);
+  padding: 1.25rem 0px 1rem 1.25rem;
+  border-left: 1px solid rgb(224, 224, 224);
 `;
