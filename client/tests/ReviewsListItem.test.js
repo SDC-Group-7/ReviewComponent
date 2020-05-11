@@ -9,7 +9,7 @@ const wrapper = shallow(<ReviewsListItem review={review}/>);
 
 describe('Test ReviewsListItem', () => {
   it('should have the correct date', () => {
-    expect(wrapper.find('.review__date').text()).toEqual(review.createdAt);
+    expect(wrapper.find('[data-test="date"]').text()).toEqual(review.createdAt);
   });
 
   it('should have the render rating', () => {
@@ -17,21 +17,21 @@ describe('Test ReviewsListItem', () => {
   });
 
   it('should have the rendered subject', () => {
-    expect(wrapper.find('.review__subject').text()).toBe(review.subject);
+    expect(wrapper.find('[data-test="subject"]').text()).toEqual(review.subject);
   });
 
   it('should have the rendered user', () => {
-    expect(wrapper.find('.review__user').text()).toBe(review.user.name);
+    expect(wrapper.find('[data-test="user"]').text()).toEqual(review.user.name);
   });
 
   it('should not show recommended', () => {
     const newReview = fixture.reviews[1];
     const conditionalWrapper = shallow(<ReviewsListItem review={newReview} />);
-    expect(conditionalWrapper.find('.review__recommendation').exists()).toBe(false);
+    expect(conditionalWrapper.find('.recommendation').exists()).toBe(false);
   });
 
   it('should show recommended', () => {
-    expect(wrapper.find('.review__recommendation').text()).toBe('I would recommend this to a friend');
+    expect(wrapper.find('.recommendation').text()).toBe('I would recommend this to a friend');
   });
 
   it('should shallow render ReviewInfos', () => {

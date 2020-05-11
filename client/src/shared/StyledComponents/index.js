@@ -14,8 +14,8 @@ export const Button = styled.button`
 `;
 
 export const Spacer = styled.div(props => ({
-  'padding-top': `${props.tm}rem` || '0px',
-  'padding-right': `${props.rm}rem` || '0px',
-  'padding-bottom': `${props.bm}rem` || '0px',
-  'padding-left': `${props.lm}rem` || '0px',
+  'padding-top': props.tm ? `${props.tm}rem;` : '0px;',
+  'padding-right': props.rm ? `${props.rm}rem;` : '0px;',
+  'padding-bottom': props.bm ? `${props.bm}rem;` : '0px;',
+  'padding-left': props.lm ? `${props.lm}rem;` : '0px;',
 }));
