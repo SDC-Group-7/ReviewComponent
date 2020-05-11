@@ -6,6 +6,7 @@ import ReviewExperience from './ReviewExperience';
 import ReviewHelpfulness from './ReviewHelpfulness';
 import Ratings from '../../shared/Ratings';
 import {HELPFULNESS_ACTION, MARKERS } from '../../constants.js';
+import { Spacer } from '../../shared/StyledComponents';
 
 class ReviewsListItem extends Component {
   constructor(props) {
@@ -58,27 +59,33 @@ class ReviewsListItem extends Component {
 
     return (
       <ReviewsContainer>
-        <span className="review__date">
+        <Spacer bm={1} data-test="date">
           {review.createdAt}
-        </span>
-        <span className="review__rating-bar">
+        </Spacer>
+        <Spacer bm={1}>
           <Ratings rating={review.rating.toFixed(1)} marker={MARKERS.STAR}/>
-        </span>
-        <span className="review__subject">
+        </Spacer>
+        <Spacer bm={1} data-test="subject">
           {review.subject}
-        </span>
-        <span className="review__user">
-          {review.user.name}
-        </span>
+        </Spacer>
+        <Spacer bm={1} data-test="user">
+          <a href="#">
+            {review.user.name}
+          </a>
+        </Spacer>
         {
           review.recommended ? (
-            <span className="review__recommendation">
-              I would recommend this to a friend
-            </span>
+            <Spacer bm={1}>
+              <Text>
+                <p className="recommendation">
+                  I would recommend this to a friend
+                </p>
+              </Text>
+            </Spacer>
           ) : null
         }
         <ReviewBodyContainer>
-          <ReviewInfos />
+          <ReviewInfos description={review.description}/>
           <ReviewExperience experiences={review.experience}/>
         </ReviewBodyContainer>
         <ReviewHelpfulness submitVote={this.submitVote.bind(this)} helpfulCount={helpfulCount} unhelpfulCount={unhelpfulCount} isLoading={isLoading} helpfulIsActive={helpfulIsActive} unhelpfulIsActive={unhelpfulIsActive}/>
@@ -103,5 +110,18 @@ const ReviewsContainer = styled.div`
 
 const ReviewBodyContainer = styled.div`
   display: flex;
-  justify-content: space-between
+  justify-content: space-between;
+  margin: 1rem 0;
+  flex-flow: row wrap;
 `;
+
+const Text = styled.div`
+font-size: 1rem;
+line-height: 1.5625rem;
+font-weight: 500;
+
+> p {
+  margin: 0;
+  color: rgb(0, 133, 55);
+}
+ `;
