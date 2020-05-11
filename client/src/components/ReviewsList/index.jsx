@@ -1,34 +1,66 @@
-import React from 'react';
+import React, { Component } from 'react';
 import styled from 'styled-components';
 import ReviewsListItem from './ReviewsListItem';
 import dropDownArrowUrl from '../../assets/svg/selectDropDownArrow/selectDropDownArrow.svg';
 
-const ReviewsList = ({reviews, productId}) => (
-  <>
-    <Title>Reviews</Title>
-    <SelectWrapper>
-      <SelectLabel>
-        <Select>
-          <Option>Date - newest first</Option>
-          <Option>Date - oldest first</Option>
-          <Option>Rating - High to Low</Option>
-          <Option>Rating - Low To High</Option>
-          <Option>Helpfulness</Option>
-          <Option>Most relavent</Option>
-        </Select>
-        <span>Most relavent</span>
-      </SelectLabel>
-      <DropDownArrowTransformation src={dropDownArrowUrl} />
-    </SelectWrapper>
-    <ReviewsListContainer>
-      {
-        reviews.map(review => (
-          <ReviewsListItem key={review.id} review={review} productId={productId} />
-        ))
-      }
-    </ReviewsListContainer>
-  </>
-);
+class ReviewsList extends Component {
+  constructor(props) {
+    super(props);
+
+    this.state = {
+      selectedValue: 'Most relavent',
+      value: '',
+    };
+
+
+    this.handleChange = this.handleChange.bind(this);
+    this.handleSubmit = this.handleSubmit.bind(this);
+  }
+
+  onChange(e) {
+    this.setState({selectedValue: e.target.value});
+    debugger
+    console.log(e.target.value);
+  }
+
+
+  handleChange(event) {
+    this.setState({value: event.target.value, selectedValue: event.target.selectedOptions[0].innerText});
+  }
+
+
+  render() {
+    const {reviews, productId} = this.props;
+    const { selectedValue, value } = this.state;
+
+    return (
+      <>
+        <Title>Reviews</Title>
+        <SelectWrapper>
+          <SelectLabel>
+            <Select value={value} onChange={this.handleChange}>
+              <Option value="newFirst">Date - newest first</Option>
+              <Option value="oldFirst">Date - oldest first</Option>
+              <Option value="highLow">Rating - High to Low</Option>
+              <Option value="lowHigh">Rating - Low To High</Option>
+              <Option value="helpful">Helpfulness</Option>
+              <Option value="relavent">Most relavent</Option>
+            </Select>
+            <SelectDisplay>{selectedValue}</SelectDisplay>
+          </SelectLabel>
+          <DropDownArrowTransformation src={dropDownArrowUrl} />
+        </SelectWrapper>
+        <ReviewsListContainer>
+          {
+            reviews.map(review => (
+              <ReviewsListItem key={review.id} review={review} productId={productId} />
+            ))
+          }
+        </ReviewsListContainer>
+      </>
+    );
+  }
+}
 
 export default ReviewsList;
 
@@ -98,4 +130,8 @@ const DropDownArrowTransformation = styled.img`
   transform: rotate(90deg);
   display: block;
   transition: transform 0.1s linear 0s;
+`;
+
+const SelectDisplay = styled.span`
+  text-align: left;
 `;
