@@ -3,6 +3,7 @@ import styled from 'styled-components';
 
 import Ratings from '../../shared/Ratings';
 import { MARKERS } from '../../constants';
+import { Spacer } from '../../shared/StyledComponents';
 
 const ReviewExperience = ({experiences}) => (
   <ReviewExperienceContainer>
@@ -39,13 +40,6 @@ const ReviewExperience = ({experiences}) => (
 
 export default ReviewExperience;
 
-
-const Spacer = styled.div(props => ({
-  'padding-top': `${props.tm}rem` || '0px',
-  'padding-right': `${props.rm}rem` || '0px',
-  'padding-bottom': `${props.bm}rem` || '0px',
-  'padding-left': `${props.lm}rem` || '0px',
-}));
 
 const ReviewExperienceContainer = styled.div`
   width: 16.97rem;

@@ -6,6 +6,7 @@ import activeThumbsup from '../../assets/svg/thumbsup/activeThumbsup.svg';
 import thumbsdown from '../../assets/svg/thumbsdown/thumbsdown.svg';
 import activeThumbsdown from '../../assets/svg/thumbsdown/activeThumbsdown.svg';
 import { HELPFULNESS_FEEDBACK } from '../../constants.js';
+import { Spacer } from '../../shared/StyledComponents';
 
 const ReviewHelpfulness = ({
   helpfulCount,
@@ -71,10 +72,3 @@ const Text = styled.span`
   line-height: 1.1875rem;
   font-weight: 500;
 `;
-
-const Spacer = styled.div(props => ({
-  'padding-top': props.tm || '0px',
-  'padding-right': props.rm || '0px',
-  'padding-bottom': props.bm || '0px',
-  'padding-left': `${props.lm}rem` || '0px',
-}));
