@@ -14,7 +14,7 @@ const ReviewsStatistics = (props) => {
   const { data } = helpers.aggregateData(reviews);
   return (
     <OverallStatistics>
-      <Test>
+      <StatisticsWrapper>
         <div>
           <span className="reviews-statistics__title">
             Overall Rating:
@@ -26,7 +26,7 @@ const ReviewsStatistics = (props) => {
             {`(${reviews.length} Reviews)`}
           </span>
         </Text>
-      </Test>
+      </StatisticsWrapper>
       <Text>
         <p>
           {data.overallRecommendation}
@@ -63,7 +63,6 @@ const RatingBreakdownWrapper = styled.div`
   display: flex;
   flex-direction: column;
   align-items: flex-start;
-  border-right: black 1px solid;
   padding-right: 3rem;
 `;
 
@@ -86,7 +85,7 @@ font-weight: 500;
 }
  `;
 
-const Test = styled.div`
+const StatisticsWrapper = styled.div`
   display: flex;
   align-items: flex-end;
   padding: 0.9375rem 0px;
