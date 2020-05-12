@@ -14,11 +14,6 @@ const getReviews = (productId) => {
 
     resolve(res.json());
   });
-<<<<<<< Updated upstream
-
-  return res.json();
-=======
->>>>>>> Stashed changes
 };
   
 const getReview = async (reviewId, productId) => {
