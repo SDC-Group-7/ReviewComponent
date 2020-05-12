@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import styled from 'styled-components';
 import ReviewsListItem from './ReviewsListItem';
-import dropDownArrowUrl from '../../assets/svg/selectDropDownArrow/selectDropDownArrow.svg';
+import dropdownArrowUrl from '../../assets/svg/selectDropdownArrow/selectDropdownArrow.svg';
 
 class ReviewsList extends Component {
   constructor(props) {
@@ -14,13 +14,10 @@ class ReviewsList extends Component {
 
 
     this.handleChange = this.handleChange.bind(this);
-    this.handleSubmit = this.handleSubmit.bind(this);
   }
 
   onChange(e) {
     this.setState({selectedValue: e.target.value});
-    debugger
-    console.log(e.target.value);
   }
 
 
@@ -48,7 +45,7 @@ class ReviewsList extends Component {
             </Select>
             <SelectDisplay>{selectedValue}</SelectDisplay>
           </SelectLabel>
-          <DropDownArrowTransformation src={dropDownArrowUrl} />
+          <DropDownArrowTransformation src={dropdownArrowUrl} />
         </SelectWrapper>
         <ReviewsListContainer>
           {
