@@ -1,6 +1,5 @@
 import React from 'react';
 import { shallow } from 'enzyme';
-import fixture from '../../legos/fixtures';
 import ReviewsOverview from '../src/components/ReviewsOverview/';
 import { Button } from '../src/shared/StyledComponents';
 
@@ -9,7 +8,10 @@ describe('Tests ReviewsOverview', () => {
 
   beforeEach(() => {
     fetch.resetMocks();
-    fetch.mockResponseOnce(JSON.stringify({reviews: [], productId: 1}));
+    // Todo: Mock fetch is returning something in the body that can't be returned with res.json in services
+    // Look into this issue later, it doesn't break tests, but it does give an async error
+    fetch.mockResponseOnce(() => new Promise((res, reject) => (res({reviews: [], productId: 1}))));
+
     reviewsOverviewWrapper = shallow(<ReviewsOverview />);
   });
 

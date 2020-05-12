@@ -1,18 +1,21 @@
 
-const getReviews = async (productId) => {
+const getReviews = (productId) => {
   const apiUrl = `http://localhost:8080/api/products/${productId}/reviews`;
 
-  const res = await fetch(apiUrl, {
-    method: 'GET',
-    headers: {
-      Accept: 'application/json',
-      'Content-type': 'application/json'
-    },
-    credentials: 'same-origin',
-  });
-  return res.json(JSON.parse(res.body.toString()));
-};
+  return new Promise(async (resolve, reject) => {
+    const res = await fetch(apiUrl, {
+      method: 'GET',
+      headers: {
+        Accept: 'application/json',
+        'Content-type': 'application/json'
+      },
+      credentials: 'same-origin',
+    });
 
+    resolve(res.json());
+  });
+};
+  
 const getReview = async (reviewId, productId) => {
   const apiUrl = `http://localhost:8080/api/products/${productId}/reviews/${reviewId}`;
 
