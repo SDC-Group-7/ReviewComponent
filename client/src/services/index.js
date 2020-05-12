@@ -14,6 +14,10 @@ const getReviews = (productId) => {
 
     resolve(res.json());
   });
+<<<<<<< HEAD
+=======
+  return res.json(JSON.parse(res.body.toString()));
+>>>>>>> 19b662e052a26efe49e44c47f04fed709106cf3c
 };
   
 const getReview = async (reviewId, productId) => {

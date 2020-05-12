@@ -22,7 +22,6 @@ describe('tests api', () => {
     const review = res.body.reviews[0];
 
     expect(res.statusCode).toEqual(200);
-    expect(res.body.productName).toEqual('batman');
     expect(review).toBeDefined();
     expect(review.experience).toBeDefined();
     expect(review.user).toBeDefined();

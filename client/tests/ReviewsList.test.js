@@ -1,7 +1,7 @@
 import React from 'react';
 import { shallow } from 'enzyme';
 import fixture from '../../legos/fixtures';
-import ReviewsList from '../src/components/reviewsList/index.jsx';
+import ReviewsList from '../src/components/ReviewsList/index.jsx';
 
 const wrapper = shallow(<ReviewsList reviews={fixture.reviews}/>);
 
