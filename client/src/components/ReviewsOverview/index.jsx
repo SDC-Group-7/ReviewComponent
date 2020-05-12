@@ -16,16 +16,16 @@ class ReviewsOverview extends Component {
   }
 
   async componentDidMount() {
-    try {
-      const res = await Services.getReviews(1);
-
-      this.setState({
-        reviews: res.reviews,
-        productId: res.productId
+    Services.getReviews(1)
+      .then(res => {
+        this.setState({
+          reviews: res.reviews,
+          productId: res.productId
+        });
+      })
+      .catch(err => {
+        console.error('failed to fetch', err);
       });
-    } catch (err) {
-      console.error('failed to fetch', err);
-    }
   }
 
   render() {
