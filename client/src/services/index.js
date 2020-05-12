@@ -10,8 +10,7 @@ const getReviews = async (productId) => {
     },
     credentials: 'same-origin',
   });
-
-  return res.json();
+  return res.json(JSON.parse(res.body.toString()));
 };
 
 const getReview = async (reviewId, productId) => {
