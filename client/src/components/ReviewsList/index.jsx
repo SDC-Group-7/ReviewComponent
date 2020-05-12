@@ -1,11 +1,7 @@
 import React, { Component } from 'react';
 import styled from 'styled-components';
 import ReviewsListItem from './ReviewsListItem';
-<<<<<<< HEAD
 import dropdownArrowUrl from '../../assets/svg/selectDropdownArrow/selectDropdownArrow.svg';
-=======
-import dropDownArrowUrl from '../../assets/svg/selectDropDownArrow/selectDropDownArrow.svg';
->>>>>>> 8808023cd25611e7228922f58bb562ee32f6bce2
 
 class ReviewsList extends Component {
   constructor(props) {
@@ -18,19 +14,10 @@ class ReviewsList extends Component {
 
 
     this.handleChange = this.handleChange.bind(this);
-<<<<<<< HEAD
-=======
-    this.handleSubmit = this.handleSubmit.bind(this);
->>>>>>> 8808023cd25611e7228922f58bb562ee32f6bce2
   }
 
   onChange(e) {
     this.setState({selectedValue: e.target.value});
-<<<<<<< HEAD
-=======
-    debugger
-    console.log(e.target.value);
->>>>>>> 8808023cd25611e7228922f58bb562ee32f6bce2
   }
 
 
@@ -58,11 +45,7 @@ class ReviewsList extends Component {
             </Select>
             <SelectDisplay>{selectedValue}</SelectDisplay>
           </SelectLabel>
-<<<<<<< HEAD
           <DropDownArrowTransformation src={dropdownArrowUrl} />
-=======
-          <DropDownArrowTransformation src={dropDownArrowUrl} />
->>>>>>> 8808023cd25611e7228922f58bb562ee32f6bce2
         </SelectWrapper>
         <ReviewsListContainer>
           {
