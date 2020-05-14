@@ -1,6 +1,6 @@
 
 const getReviews = (productId) => {
-  const apiUrl = `http://localhost:8080/api/products/${productId}/reviews`;
+  const apiUrl = `/api/products/${productId}/reviews`;
 
   return new Promise(async (resolve, reject) => {
     const res = await fetch(apiUrl, {
@@ -17,7 +17,7 @@ const getReviews = (productId) => {
 };
   
 const getReview = async (reviewId, productId) => {
-  const apiUrl = `http://localhost:8080/api/products/${productId}/reviews/${reviewId}`;
+  const apiUrl = `/api/products/${productId}/reviews/${reviewId}`;
 
   const res = await fetch(apiUrl, {
     method: 'GET',
@@ -31,7 +31,7 @@ const getReview = async (reviewId, productId) => {
 };
 
 const sendVote = async(reviewId, productId, data) => {
-  const apiUrl = `http://localhost:8080/api/products/${productId}/reviews/${reviewId}`;
+  const apiUrl = `/api/products/${productId}/reviews/${reviewId}`;
 
   const res = await fetch(apiUrl, {
     method: 'PUT',
