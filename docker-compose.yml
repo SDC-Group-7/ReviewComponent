@@ -1,0 +1,29 @@
+version: '2.1'
+services:
+    db:
+        image: mysql:5.7.29
+        environment:
+            MYSQL_DATABASE: ${DB}
+            MYSQL_USER: ${DB_USER} 
+            MYSQL_PASSWORD: ${DB_PASS}
+            restart: 'always'
+        volumes:
+            - my-db:/var/lib/mysql
+
+    web:
+        build: .
+        environment:
+            HOST: ${HOST} 
+            DB_USER: ${DB_USER} 
+            DB_PASS: ${DB_PASS}
+            DB: ${DB}
+        ports:
+        - "8080:8080"
+        volumes:
+             - ${PWD}/:/src/reviews
+    proxy:
+        build: ../ShojiProxyServer/
+        ports:
+        - "8000:8000"
+volumes:
+    my-db: {}
