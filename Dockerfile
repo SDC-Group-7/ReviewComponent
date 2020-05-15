@@ -13,6 +13,4 @@ RUN npm install
 
 EXPOSE 8080
 
-CMD [ "npm", "run", "reset_db" ]
-CMD [ "npm", "run", "import_db" ]
-CMD [ "npm", "run", "server" ]
+CMD [ "npm", "run", "docker_me" ]
