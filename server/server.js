@@ -4,7 +4,7 @@ const Reviews = require('../controllers/reviews');
 
 const app = express();
 
-app.use(express.static('public'));
+app.use(express.static('public/dist'));
 app.use(bodyParser.urlencoded({ extended: false }));
 app.use(bodyParser.json());
 
