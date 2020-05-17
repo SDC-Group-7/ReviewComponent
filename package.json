@@ -8,12 +8,19 @@
     "node": ">=6.13.0"
   },
   "scripts": {
-    "reset_db": "mysql -h mysql -uroot < ./db/lego_schema.sql",
+    "reset_db": "mysql -h 54.193.74.145 -uroot < ./db/lego_schema.sql",
     "seed_db": "node ./db/seed/seeder.js",
     "nodemon": "nodemon ./server/index.js",
+<<<<<<< HEAD
     "start": "webpack --config webpack.prod.js && node ./server/index.js",
     "server": "concurrently -k \"npm run nodemon\" \"npx webpack -w --config webpack.dev.js\"",
     "docker_me": "sleep 10 && concurrently \"npm run seed_db\" \"npm start\"",
+=======
+    "build": "webpack —mode production",
+    "start": "webpack && node ./server/index.js",
+    "server": "concurrently -k \"npm run nodemon\" \"npm run start\"",
+    "docker_me": "sleep 10 && npm start",
+>>>>>>> 30a1b6ec1396575f18005967312d6026f0051655
     "circleci": "webpack && npm run seed_db",
     "ci:test": "jest ./client --ci --runInBand --detectOpenHandles --forceExit",
     "test": "jest",

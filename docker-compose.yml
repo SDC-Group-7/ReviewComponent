@@ -35,6 +35,10 @@ services:
         - mysql
     proxy:
         image: stakashima21/reviews-proxy:latest
+        environment:
+            REVIEWS_URL: ${REVIEWS_URL}
+            GALLERY_URL: ${GALLERY_URL}
+            PRODUCTS_URL: ${PRODUCTS_URL}
         build: ../ShojiProxyServer/
         container_name: lego_proxy 
         networks:
