@@ -98,7 +98,7 @@ const ToggleDescriptionButton = styled.button`
     font-weight: 500;
     font-size: 0.875rem;
     line-height: 1.1875rem;
-    color: rgb(0, 109, 183);
+    color: rgb(0, 98, 165);
     padding: 0;
     margin-bottom: 1.25rem;
     border-radius: 4px;

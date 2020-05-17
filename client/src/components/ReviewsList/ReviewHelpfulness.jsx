@@ -26,14 +26,14 @@ const ReviewHelpfulness = ({
       <ThumbButton disabled={isLoading || unhelpfulIsActive} data-is-active={helpfulIsActive} onClick={() => {
         submitVote(HELPFULNESS_FEEDBACK.POSITIVE);
       }}>
-        <img src={helpfulIsActive ? activeThumbsup : thumbsup}></img>
+        <img alt="marker" src={helpfulIsActive ? activeThumbsup : thumbsup}></img>
         <Spacer lm={0.75}></Spacer>
         <Text>{helpfulCount}</Text>
       </ThumbButton>
       <ThumbButton disabled={isLoading || helpfulIsActive} data-is-active={unhelpfulIsActive} onClick={() => {
         submitVote(HELPFULNESS_FEEDBACK.NEGATIVE);
       }}>
-        <img src={unhelpfulIsActive ? activeThumbsdown : thumbsdown}></img>
+        <img alt="marker" src={unhelpfulIsActive ? activeThumbsdown : thumbsdown}></img>
         <Spacer lm={0.75}></Spacer>
         <Text>{unhelpfulCount}</Text>
       </ThumbButton>
