@@ -12,7 +12,6 @@ class ReviewsList extends Component {
       value: '',
     };
 
-
     this.handleChange = this.handleChange.bind(this);
   }
 
@@ -20,11 +19,9 @@ class ReviewsList extends Component {
     this.setState({selectedValue: e.target.value});
   }
 
-
   handleChange(event) {
     this.setState({value: event.target.value, selectedValue: event.target.selectedOptions[0].innerText});
   }
-
 
   render() {
     const {reviews, productId} = this.props;
@@ -45,7 +42,7 @@ class ReviewsList extends Component {
             </Select>
             <SelectDisplay>{selectedValue}</SelectDisplay>
           </SelectLabel>
-          <DropDownArrowTransformation src={dropdownArrowUrl} />
+          <DropDownArrowTransformation alt="dropdown arrow" src={dropdownArrowUrl} />
         </SelectWrapper>
         <ReviewsListContainer>
           {
