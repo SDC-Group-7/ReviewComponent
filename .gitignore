@@ -1,8 +1,9 @@
 .envrc
+.env
 node_modules
 .vscode
 coverage/
 .DS_Store
 public/dist/
-
+*.pem
 

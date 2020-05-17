@@ -1,24 +1,25 @@
 {
-  "name": "shoji",
-  "version": "",
-  "description": "",
-  "author": "",
-  "license": "",
+  "name": "reviews",
+  "version": "1.0.0",
+  "description": "Review component server and client",
+  "author": "Shoji",
+  "license": "N/A",
   "engines": {
     "node": ">=6.13.0"
   },
   "scripts": {
-    "reset_db": "mysql -h 127.0.0.1 -uroot < ./db/lego_schema.sql",
-    "seed_db": "npm run reset_db && node ./db/seed/seeder.js",
+    "reset_db": "mysql -h 54.193.74.145 -uroot < ./db/lego_schema.sql",
+    "seed_db": "node ./db/seed/seeder.js",
     "nodemon": "nodemon ./server/index.js",
-    "ci:test": "jest ./client --ci --runInBand --detectOpenHandles --forceExit",
-    "circleci": "webpack && npm run seed_db",
-    "start": "webpack -w",
-    "build": "webpack — mode production",
+    "build": "webpack —mode production",
+    "start": "webpack && node ./server/index.js",
     "server": "concurrently -k \"npm run nodemon\" \"npm run start\"",
-    "lint": "eslint .",
+    "docker_me": "sleep 10 && npm start",
+    "circleci": "webpack && npm run seed_db",
+    "ci:test": "jest ./client --ci --runInBand --detectOpenHandles --forceExit",
     "test": "jest",
-    "test:w": "jest . --watch"
+    "test:w": "jest . --watch",
+    "lint": "eslint ."
   },
   "dependencies": {
     "bluebird": "^3.7.2",

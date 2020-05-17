@@ -1,0 +1,13 @@
+node_modules
+.env
+.envrc
+*.pem
+.dockerignore
+docker-compose.yml
+Dockerfile
+.git
+jest.config.js
+enzyme.config.js
+coverage
+STYLE-GUIDE.md
+
