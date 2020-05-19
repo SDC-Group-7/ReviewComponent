@@ -8,10 +8,12 @@
     "node": ">=6.13.0"
   },
   "scripts": {
+    "init_db": "mysql -u root -p < ./db/lego_schema.sql",
     "reset_db": "mysql -h 54.193.74.145 -uroot < ./db/lego_schema.sql",
     "seed_db": "node ./db/seed/seeder.js",
     "nodemon": "nodemon ./server/index.js",
-    "start": "webpack --config webpack.prod.js && node ./server/index.js",
+    "build": "webpack --config webpack.prod.js",
+    "start": "node ./server/index.js",
     "server": "concurrently -k \"npm run nodemon\" \"npx webpack -w --config webpack.dev.js\"",
     "docker_me": "sleep 10 && \"npm start\"",
     "circleci": "webpack && npm run seed_db",

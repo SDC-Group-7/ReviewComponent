@@ -3,9 +3,6 @@ CREATE DATABASE legos;
 
 USE legos;
 
-CREATE USER IF NOT EXISTS 'test'@localhost IDENTIFIED BY 'test';
-GRANT ALL PRIVILEGES ON legos.* TO 'test'@localhost;
-
 DROP TABLE IF EXISTS images;
 CREATE TABLE images (
 	id INT NOT NULL PRIMARY KEY AUTO_INCREMENT,
