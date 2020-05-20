@@ -46,7 +46,7 @@ npm start
 
 **Returns**: JSON of review
 
-```json
+```
 {
   id: Number,
   user_id: Number,
@@ -75,7 +75,7 @@ npm start
 
 **Request Body**: Expects JSON with any of the following keys (include only keys to be updated)
 
-```json
+```
 {
   feedback: "is_helpful" || "is_not_helpful",
   action: "+" || "-"
@@ -84,7 +84,7 @@ npm start
 
 **Returns**: JSON of modified review
 
-```json
+```
 {
   id: Number,
   user_id: Number,
@@ -121,7 +121,7 @@ npm start
 
 **Request Body**: Expects JSON in the following format.
 
-```json
+```
 {
   user_id: Number,
   rating: Number,
@@ -145,7 +145,7 @@ npm start
 
 **Returns:** JSON Array of reviews joined with users who wrote them
 
-```json
+```
 [{
   id: Number,
   user: {
