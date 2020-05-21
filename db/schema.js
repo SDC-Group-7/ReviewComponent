@@ -6,39 +6,36 @@ const Schema = mongoose.Schema({
   user: {
     id: Number,
     name: String,
-    experience: Number
+    date_of_birth: Date,
+    building_experience: Number
   },
   product_id: Number,
-  createdAt: Date,
   rating: Number,
-  recommended: Boolean,
-  subject: String,
-  description: String,
+  would_recommend: Boolean,
+  purchased_for: Number,
+  headline: String,
+  review: String,
   is_helpful: Number,
   is_not_helpful: Number,
   play_experience: Number,
-  difficulty: Number,
-  value: Number,
-  build_time: Number,
+  difficulty_level: Number,
+  value_for_money: Number,
+  build_time: Number
 });
 
 let Review = mongoose.model('Review', Schema);
 
-export default createOne = (review, callback) => {
+module.exports.create = (review, callback) => {
   review.is_helpful = 0;
   review.is_not_helpful = 0;
-  new Review(review, {timestamps: true}).save(callback);
+  new Review(review, {timestamps: {createdAt: 'created_at'}).save(callback);
 };
 
-export default readAll = (product_id, callback) => {
+module.exports.read = (product_id, callback) => {
   Review.find({product_id}).exec(callback);
 };
 
-export default readOne = (id, callback) => {
-  Review.find({id}).exec(callback);
-};
-
-export default updateOne = (id, data, callback) => {
+module.exports.update = (id, data, callback) => {
   if (data.feedback === "is_helpful") {
     if (data.action === "+") {
       Review.updateOne({id}, {$inc: {is_helpful: 1}}).exec(callback);
@@ -60,6 +57,6 @@ export default updateOne = (id, data, callback) => {
   }
 };
 
-export default deleteOne = (id, callback) => {
+module.exports.delete = (id, callback) => {
   Review.deleteOne({id}).exec(callback);
 };

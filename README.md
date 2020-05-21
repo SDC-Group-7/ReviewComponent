@@ -48,20 +48,21 @@ npm start
 
 ```
 {
-  id: Number,
-  user_id: Number,
-  product_id: Number,
-  createdAt: Date,
-  rating: Number,
-  recommended: Boolean,
-  subject: String,
-  description: String,
-  is_helpful: Number,
-  is_not_helpful: Number,
-  play_experience: Number,
-  difficulty: Number,
-  value: Number,
-  build_time: Number,
+  id:                  Number,
+  user_id:             Number,
+  product_id:          Number,
+  created_at:          Date,
+  rating:              Number,
+  would_recommend:     Boolean,
+  headline:            String,
+  review:              String,
+  is_helpful:          Number,
+  is_not_helpful:      Number,
+  purchased_for:       Number || null,
+  play_experience:     Number || null,
+  level_of_difficulty: Number || null,
+  value_for_money:     Number || null,
+  build_time:          Number || null
 }
 ```
 
@@ -86,20 +87,21 @@ npm start
 
 ```
 {
-  id: Number,
-  user_id: Number,
-  product_id: Number,
-  createdAt: Date,
-  rating: Number,
-  recommended: Boolean,
-  subject: String,
-  description: String,
-  is_helpful: Number,
-  is_not_helpful: Number,
-  play_experience: Number,
-  difficulty: Number,
-  value: Number,
-  build_time: Number,
+  id:                  Number,
+  user_id:             Number,
+  product_id:          Number,
+  created_at:          Date,
+  rating:              Number,
+  would_recommend:     Boolean,
+  headline:            String,
+  review:              String,
+  is_helpful:          Number,
+  is_not_helpful:      Number,
+  purchased_for:       Number || null,
+  play_experience:     Number || null,
+  level_of_difficulty: Number || null,
+  value_for_money:     Number || null,
+  build_time:          Number || null
 }
 ```
 
@@ -123,15 +125,16 @@ npm start
 
 ```
 {
-  user_id: Number,
-  rating: Number,
-  recommended: Boolean,
-  subject: String,
-  description: String,
-  play_experience: Number,
-  difficulty: Number,
-  value: Number,
-  build_time: Number,
+  user_id:             Number,
+  rating:              Number,
+  would_recommend:     Boolean,
+  headline:            String,
+  review:              String,
+  purchased_for:       Number || null,
+  play_experience:     Number || null,
+  level_of_difficulty: Number || null,
+  value_for_money:     Number || null,
+  build_time:          Number || null,
 }
 ```
 
@@ -147,23 +150,25 @@ npm start
 
 ```
 [{
-  id: Number,
+  id:                    Number,
   user: {
-    id: Number,
-    name: String,
-    experience: Number
+    id:                  Number,
+    name:                String,
+    date_of_birth:       Date || null,
+    building_experience: Number || null
   },
-  product_id: Number,
-  createdAt: Date,
-  rating: Number,
-  recommended: Boolean,
-  subject: String,
-  description: String,
-  is_helpful: Number,
-  is_not_helpful: Number,
-  play_experience: Number,
-  difficulty: Number,
-  value: Number,
-  build_time: Number,
+  product_id:            Number,
+  created_at:            Date,
+  rating:                Number,
+  would_recommend:       Boolean,
+  headline:              String,
+  review:                String,
+  is_helpful:            Number,
+  is_not_helpful:        Number,
+  purchased_for:         Number || null,
+  play_experience:       Number || null,
+  level_of_difficulty:   Number || null,
+  value_for_money:       Number || null,
+  build_time:            Number || null
 }, ...]
 ```
