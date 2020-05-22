@@ -1,17 +1,13 @@
-DROP DATABASE IF EXISTS legos;
-CREATE DATABASE legos;
-USE legos;
-
 CREATE TABLE users (
-  id BIGINT NOT NULL PRIMARY KEY AUTO_INCREMENT,
+  id BIGSERIAL NOT NULL PRIMARY KEY,
   name VARCHAR(32) NOT NULL,
   age_group SMALLINT CHECK(age_group >= 0 AND age_group < 10),
   building_experience SMALLINT CHECK(building_experience >= 0 AND building_experience < 4)
 );
 
 CREATE TABLE reviews (
-  id BIGINT NOT NULL PRIMARY KEY AUTO_INCREMENT,
-  user_id BIGINT NOT NULL,
+  id BIGSERIAL NOT NULL PRIMARY KEY,
+  user_id BIGINT NOT NULL REFERENCES users,
   product_id BIGINT NOT NULL,
   created_at DATE NOT NULL DEFAULT CURRENT_DATE,
   headline VARCHAR(32) NOT NULL,
@@ -24,6 +20,5 @@ CREATE TABLE reviews (
   play_experience SMALLINT CHECK(play_experience > 0 AND play_experience < 6),
   level_of_difficulty SMALLINT CHECK(level_of_difficulty > 0 AND level_of_difficulty < 6),
   value_for_money SMALLINT CHECK(value_for_money > 0 AND value_for_money < 6),
-  build_time SMALLINT,
-  FOREIGN KEY (user_id) REFERENCES users(id)
+  build_time SMALLINT
 );
