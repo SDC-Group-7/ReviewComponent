@@ -3,31 +3,27 @@ CREATE DATABASE legos;
 USE legos;
 
 CREATE TABLE users (
-  id BIGINT UNSIGNED NOT NULL PRIMARY KEY AUTO_INCREMENT,
+  id BIGINT NOT NULL PRIMARY KEY AUTO_INCREMENT,
   name VARCHAR(32) NOT NULL,
-  date_of_birth DATE,
-  building_experience BIT(2)
+  age_group SMALLINT CHECK(age_group >= 0 AND age_group < 10),
+  building_experience SMALLINT CHECK(building_experience >= 0 AND building_experience < 4)
 );
 
 CREATE TABLE reviews (
-  id BIGINT UNSIGNED NOT NULL PRIMARY KEY AUTO_INCREMENT,
-  user_id BIGINT UNSIGNED NOT NULL,
-  product_id BIGINT UNSIGNED NOT NULL,
+  id BIGINT NOT NULL PRIMARY KEY AUTO_INCREMENT,
+  user_id BIGINT NOT NULL,
+  product_id BIGINT NOT NULL,
   created_at DATE NOT NULL DEFAULT CURRENT_DATE,
-  rating BIT(3) NOT NULL,
-  CHECK(rating > 0 AND rating < 6),
-  would_recommend BOOLEAN NOT NULL,
-  purchased_for BIT(2),
   headline VARCHAR(32) NOT NULL,
   review VARCHAR(1023) NOT NULL,
-  is_helpful TINYINT UNSIGNED DEFAULT 0,
-  is_not_helpful TINYINT UNSIGNED DEFAULT 0,
-  play_experience BIT(3),
-  CHECK(play_experience > 0 AND play_experience < 6),
-  level_of_difficulty BIT(3),
-  CHECK(level_of_difficulty > 0 AND level_of_difficulty < 6),
-  value_for_money BIT(3),
-  CHECK(value_for_money > 0 AND value_for_money < 6),
-  build_time TINYINT UNSIGNED,
+  would_recommend BOOLEAN NOT NULL,
+  rating SMALLINT NOT NULL CHECK(rating > 0 AND rating < 6),
+  is_helpful SMALLINT DEFAULT 0,
+  is_not_helpful SMALLINT DEFAULT 0,
+  purchased_for SMALLINT CHECK(purchased_for >= 0 AND purchased_for < 3),
+  play_experience SMALLINT CHECK(play_experience > 0 AND play_experience < 6),
+  level_of_difficulty SMALLINT CHECK(level_of_difficulty > 0 AND level_of_difficulty < 6),
+  value_for_money SMALLINT CHECK(value_for_money > 0 AND value_for_money < 6),
+  build_time SMALLINT,
   FOREIGN KEY (user_id) REFERENCES users(id)
 );
