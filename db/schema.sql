@@ -1,3 +1,6 @@
+CREATE DATABASE legotest;
+\c legotest;
+
 CREATE TABLE users (
   id BIGSERIAL NOT NULL PRIMARY KEY,
   name VARCHAR(32) NOT NULL,
@@ -22,3 +25,6 @@ CREATE TABLE reviews (
   value_for_money SMALLINT CHECK(value_for_money > 0 AND value_for_money < 6),
   build_time SMALLINT
 );
+
+CREATE USER root;
+GRANT ALL PRIVILEGES ON DATABASE legotest TO root;
