@@ -1,5 +1,5 @@
 const mongoose = require('mongoose');
-mongoose.connect('mongodb://localhost/lego-reviews', {useMongoClient: true});
+mongoose.connect('mongodb://localhost/lego-reviews', { useNewUrlParser: true, useUnifiedTopology: true });
 
 const Schema = mongoose.Schema({
   id:                  Number,
@@ -25,7 +25,11 @@ let Review = mongoose.model('Review', Schema);
 module.exports.create = (review, callback) => {
   review.is_helpful = 0;
   review.is_not_helpful = 0;
-  new Review(review, {timestamps: {createdAt: 'created_at'}).save(callback);
+  if (callback) {
+    new Review(review).save(callback);
+  } else {
+    return new Review(review).save();
+  }
 };
 
 module.exports.read = (product_id, callback) => {
@@ -61,3 +65,5 @@ module.exports.update = (id, data, callback) => {
 module.exports.delete = (id, callback) => {
   Review.deleteOne({id}).exec(callback);
 };
+
+module.exports.schema = Review;
