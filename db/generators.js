@@ -3,7 +3,7 @@ const broisms = require('./broisms.js');
 const names = require('./names.js');
 
 const make_numbers = function* (k = 100) {
-  let n = Math.random() * k >> 0;
+  let n = 0;
   while (true) {
     n %= k;
     yield ++n;
