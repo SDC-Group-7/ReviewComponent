@@ -1,4 +1,4 @@
-const {create} = require('./schema.js');
+const {create} = require('../');
 const {
   user_id,
   product_id,
