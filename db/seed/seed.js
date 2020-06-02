@@ -9,14 +9,14 @@ const {
   rating
 } = require('./generators.js');
 
-const reviewer = require('./client.js');
+const chat_client = require('./client.js');
 
-const save = async review => {
+const write_to_db = async review => {
   await create({
+    review,
     product_id: product_id.next().value,
     name: name.next().value,
     headline: headline.next().value,
-    review,
     would_recommend: would_recommend.next().value,
     rating: rating.next().value,
     age_group: rating.next().value,
@@ -30,4 +30,4 @@ const save = async review => {
   .catch(console.error);
 };
 
-reviewer(save);
+chat_client(write_to_db);
