@@ -5,15 +5,21 @@ const io = readline.createInterface({
   output: process.stdout
 });
 
-const getReview = () => new Promise(resolve => io.question('\n', resolve));
+const review = () => new Promise(resolve => io.question('\n', resolve));
 
-const getReviews = async (n = 1) => {
-  while (n-- > 0) {
-    await getReview().then(console.error);
+const nReviews = n => {
+  return async callback => {
+    console.error(new Date());
+    for (let i = 0; i < n; i++) {
+      await review().then(callback);
+    }
+    console.error('closing connection after ', n);
+    console.error(new Date());
+    io.close();
+    process.exit();
   }
-  io.close();
-  process.exit();
-};
+}
 
 const n = +process.argv[process.argv.length - 1] || 1;
-getReviews(n);
+
+module.exports = nReviews(n);
