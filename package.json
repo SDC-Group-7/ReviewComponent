@@ -9,7 +9,6 @@
   },
   "scripts": {
     "seed": ". ./db/seed/seed.sh $1",
-    "db:seed": ". ./db/seed/seed.sh 10000000",
     "nodemon": "nodemon ./server/index.js",
     "build": "webpack --config webpack.prod.js",
     "start": "node ./server/index.js",
