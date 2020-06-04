@@ -1,6 +1,7 @@
 const express = require('express');
 const bodyParser = require('body-parser');
 const Reviews = require('../controllers/reviews');
+const db = require('../db/');
 
 const app = express();
 
@@ -18,18 +19,13 @@ app.use((req, res, next) => {
 });
 
 app.get('/api/products/:product_id/reviews', (req, res) => {
-  const productId = req.params.product_id;
-  Reviews.getReviewsForProduct(productId)
-    .then((reviews) => {
-      if (reviews.count === undefined) {
-        throw 'Reviews not found';
-      } else {
-        res.status(200).json(reviews);
-      }
-    })
-    .catch((err) => {
-      res.status(404).send(err);
-    });
+  db.read(req.params.product_id, (err, data) => {
+    if (err) {
+      res.status(404).json(err);
+    } else {
+      res.status(200).json(data);
+    }
+  });
 });
 
 app.put('/api/products/:product_id/reviews/:review_id', (req, res) => {
